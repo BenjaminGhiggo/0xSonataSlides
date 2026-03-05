@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>0xSonata - Notario Digital Web3 para Artistas Emergentes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* --- CORE STYLING & RESET --- */
@@ -19,7 +22,12 @@
             --easing: cubic-bezier(0.65, 0, 0.35, 1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: var(--bg-deep);
             color: #fff;
@@ -46,7 +54,8 @@
 
         #slide-wrapper {
             display: flex;
-            width: 1200%; /* 12 slides */
+            width: 1200%;
+            /* 12 slides */
             height: 100%;
             transition: transform var(--transition-speed) var(--easing);
         }
@@ -73,11 +82,13 @@
             gap: 12px;
             z-index: 100;
         }
+
         .logo-icon {
             font-size: 2rem;
             color: var(--neon-cyan);
             text-shadow: 0 0 20px var(--neon-cyan);
         }
+
         .logo-text {
             font-family: 'Orbitron';
             font-size: 1.4rem;
@@ -149,7 +160,10 @@
             cursor: grab;
             filter: drop-shadow(0 0 15px var(--neon-cyan));
         }
-        #robot-agent:active { cursor: grabbing; }
+
+        #robot-agent:active {
+            cursor: grabbing;
+        }
 
         #robot-speech {
             position: absolute;
@@ -167,6 +181,7 @@
             transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             pointer-events: none;
         }
+
         #robot-speech::after {
             content: '';
             position: absolute;
@@ -177,7 +192,10 @@
             border-right: 8px solid transparent;
             border-top: 8px solid #fff;
         }
-        #robot-speech.active { transform: translateX(-50%) scale(1); }
+
+        #robot-speech.active {
+            transform: translateX(-50%) scale(1);
+        }
 
         .robot-body {
             width: 50px;
@@ -261,22 +279,82 @@
             animation: engine 0.2s infinite alternate;
         }
 
-        @keyframes hover { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
-        @keyframes pulse-glow { from { box-shadow: 0 0 2px var(--neon-purple); } to { box-shadow: 0 0 12px var(--neon-purple); } }
-        @keyframes engine { from { height: 10px; opacity: 0.4; } to { height: 18px; opacity: 0.8; } }
+        @keyframes hover {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+        }
+
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 2px var(--neon-purple);
+            }
+
+            to {
+                box-shadow: 0 0 12px var(--neon-purple);
+            }
+        }
+
+        @keyframes engine {
+            from {
+                height: 10px;
+                opacity: 0.4;
+            }
+
+            to {
+                height: 18px;
+                opacity: 0.8;
+            }
+        }
 
         /* --- TYPOGRAPHY & VISUALS --- */
-        h1 { font-family: 'Orbitron'; font-size: 70px; color: var(--neon-cyan); text-transform: uppercase; line-height: 1.1; }
-        .slide-title { font-family: 'Orbitron'; font-size: 36px; margin-bottom: 30px; color: var(--neon-purple); letter-spacing: 2px; }
-        p, li { font-size: 18px; color: #b0b0c0; line-height: 1.6; }
-        .highlight { color: var(--neon-cyan); font-weight: 700; }
-        .warning { color: #ff6b6b; font-weight: 700; }
+        h1 {
+            font-family: 'Orbitron';
+            font-size: 70px;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .slide-title {
+            font-family: 'Orbitron';
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--neon-purple);
+            letter-spacing: 2px;
+        }
+
+        p,
+        li {
+            font-size: 18px;
+            color: #b0b0c0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+
+        .warning {
+            color: #ff6b6b;
+            font-weight: 700;
+        }
 
         .grid-bg {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -1;
         }
@@ -290,10 +368,29 @@
             backdrop-filter: blur(10px);
         }
 
-        .image-box { border: 1px solid var(--neon-cyan); border-radius: 10px; overflow: hidden; position: relative; }
-        .image-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .image-box {
+            border: 1px solid var(--neon-cyan);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
 
-        .nav-hint { position: fixed; bottom: 5px; width: 100%; text-align: center; color: rgba(255,255,255,0.1); font-size: 10px; letter-spacing: 2px; }
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .nav-hint {
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
 
         .stat-box {
             background: rgba(0, 243, 255, 0.05);
@@ -302,12 +399,14 @@
             border-radius: 10px;
             text-align: center;
         }
+
         .stat-number {
             font-family: 'Orbitron';
             font-size: 32px;
             color: var(--neon-cyan);
             margin-bottom: 5px;
         }
+
         .stat-label {
             font-size: 14px;
             color: #888;
@@ -320,6 +419,7 @@
             border-radius: 10px;
             margin-bottom: 15px;
         }
+
         .step-number {
             font-family: 'Orbitron';
             font-size: 24px;
@@ -339,480 +439,505 @@
         }
     </style>
 </head>
+
 <body>
 
-<div id="presentation-viewport">
-    <!-- Logo 0xSonata -->
-    <div class="logo">
-        <span class="logo-icon">𝄞</span>
-        <span class="logo-text">0xSonata</span>
-    </div>
-
-    <!-- UI Navigation Buttons -->
-    <div class="ui-nav-panel">
-        <button class="nav-button" id="prevSlide" title="Anterior"><i class="fas fa-arrow-left"></i></button>
-        <div class="slide-counter" id="slideCount">01 / 12</div>
-        <button class="nav-button" id="nextSlide" title="Siguiente"><i class="fas fa-arrow-right"></i></button>
-    </div>
-
-    <!-- Robotic Agent -->
-    <div id="robot-agent">
-        <div id="robot-speech">¡OYE!</div>
-        <div class="robot-antenna"></div>
-        <div class="robot-body">
-            <div class="robot-face">
-                <div class="eye-container"><div class="eye"></div></div>
-                <div class="eye-container"><div class="eye"></div></div>
-            </div>
-            <div class="robot-thruster"></div>
-        </div>
-    </div>
-
-    <div id="slide-wrapper">
-        <!-- Slide 1: Title -->
-        <div class="slide-container">
-            <div class="grid-bg"></div>
-            <div style="text-align: center;">
-                <div class="logo" style="position: static; margin-bottom: 40px;">
-                    <span class="logo-icon" style="font-size: 4rem;">𝄞</span>
-                    <span class="logo-text" style="font-size: 2.5rem;">0xSonata</span>
-                </div>
-                <p style="color: var(--neon-cyan); letter-spacing: 5px; margin-bottom: 20px;">NOTARIO DIGITAL WEB3</p>
-                <h1>PARA ARTISTAS EMERGENTES</h1>
-                <div style="width: 150px; height: 4px; background: var(--neon-purple); margin: 30px auto;"></div>
-                <p style="font-size: 22px; color: #fff;">que crean música usando herramientas de IA</p>
-                <p style="margin-top: 20px; color: #888;">0xsonata.site</p>
-            </div>
+    <div id="presentation-viewport">
+        <!-- Logo 0xSonata -->
+        <div class="logo">
+            <span class="logo-icon">𝄞</span>
+            <span class="logo-text">0xSonata</span>
         </div>
 
-        <!-- Slide 2: El Problema -->
-        <div class="slide-container">
-            <h2 class="slide-title">01. El Problema</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                <div>
-                    <p style="margin-bottom: 20px;">El <span class="warning">Copyright Office de EE.UU.</span> estableció en 2025:</p>
-                    <div class="tile" style="margin-bottom: 20px;">
-                        <i class="fa-solid fa-circle-xmark" style="color: #ff6b6b; margin-right: 10px;"></i>
-                        <span>Música <strong>100% generada por IA</strong> NO tiene copyright</span>
+        <!-- UI Navigation Buttons -->
+        <div class="ui-nav-panel">
+            <button class="nav-button" id="prevSlide" title="Anterior"><i class="fas fa-arrow-left"></i></button>
+            <div class="slide-counter" id="slideCount">01 / 12</div>
+            <button class="nav-button" id="nextSlide" title="Siguiente"><i class="fas fa-arrow-right"></i></button>
+        </div>
+
+        <!-- Robotic Agent -->
+        <div id="robot-agent">
+            <div id="robot-speech">¡OYE!</div>
+            <div class="robot-antenna"></div>
+            <div class="robot-body">
+                <div class="robot-face">
+                    <div class="eye-container">
+                        <div class="eye"></div>
                     </div>
-                    <div class="tile" style="margin-bottom: 20px;">
-                        <i class="fa-solid fa-circle-check" style="color: var(--neon-cyan); margin-right: 10px;"></i>
-                        <span>Música con <strong>autoría humana significativa</strong> SÍ se protege</span>
+                    <div class="eye-container">
+                        <div class="eye"></div>
                     </div>
-                    <p class="warning">⚠️ Los artistas necesitan demostrar "control creativo humano"</p>
                 </div>
-                <div class="image-box" style="height: 400px;">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Music Production">
-                </div>
+                <div class="robot-thruster"></div>
             </div>
         </div>
 
-        <!-- Slide 3: La Solución -->
-        <div class="slide-container">
-            <h2 class="slide-title">02. La Solución</h2>
-            <p style="margin-bottom: 30px; font-size: 22px;">0xSonata registra cada paso del proceso creativo con <span class="highlight">hash SHA-256 + timestamp en blockchain</span></p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="stat-box">
-                    <div class="stat-number">~$0.001</div>
-                    <div class="stat-label">Costo por usuario</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">Inmutable</div>
-                    <div class="stat-label">Evidencia en blockchain</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">zkSYS PoB</div>
-                    <div class="stat-label">Red zkSYS PoB Devnet</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">PDF</div>
-                    <div class="stat-label">Certificados descargables</div>
+        <div id="slide-wrapper">
+            <!-- Slide 1: Title -->
+            <div class="slide-container">
+                <div class="grid-bg"></div>
+                <div style="text-align: center;">
+                    <div class="logo" style="position: static; margin-bottom: 40px;">
+                        <span class="logo-icon" style="font-size: 4rem;">𝄞</span>
+                        <span class="logo-text" style="font-size: 2.5rem;">0xSonata</span>
+                    </div>
+                    <p style="color: var(--neon-cyan); letter-spacing: 5px; margin-bottom: 20px;">NOTARIO DIGITAL WEB3
+                    </p>
+                    <h1 style="font-size: 50px;">PARA ARTISTAS EMERGENTES</h1>
+                    <h1 style="font-size: 50px; color: var(--neon-purple);">QUE CREAN MÚSICA</h1>
+                    <div style="width: 150px; height: 4px; background: var(--neon-purple); margin: 20px auto;"></div>
+                    <p style="font-size: 22px; color: #fff;">Usando Herramientas de IA</p>
+                    <p style="margin-top: 20px; color: #888;">0xsonata.site</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 4: Los 5 Pasos -->
-        <div class="slide-container">
-            <h2 class="slide-title">03. Los 5 Pasos del Proceso</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="step-card">
-                    <div class="step-number">🤖 Paso 1</div>
-                    <p><strong>Prompt en Suno/Udio</strong> - El prompt exacto que usaste para generar la idea</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">✍️ Paso 2</div>
-                    <p><strong>Variaciones IA</strong> - Las diferentes opciones que la IA generó</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">⛓️ Paso 3</div>
-                    <p><strong>Tu Selección</strong> - Por qué elegiste esa variación (decisión humana)</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">📜 Paso 4</div>
-                    <p><strong>Edición DAW</strong> - Tu aporte humano en Ableton/FL Studio</p>
-                </div>
-                <div class="step-card" style="grid-column: span 2; border-color: var(--neon-cyan);">
-                    <div class="step-number" style="color: var(--neon-cyan);">💾 Paso 5</div>
-                    <p><strong>Master Final</strong> - El resultado final con hash registrado en blockchain</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 5: Arquitectura -->
-        <div class="slide-container">
-            <h2 class="slide-title">04. Arquitectura Técnica</h2>
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="tile" style="display: flex; align-items: center; gap: 20px;">
-                    <i class="fa-brands fa-angular" style="font-size: 40px; color: #dd0031;"></i>
+            <!-- Slide 2: El Problema -->
+            <div class="slide-container">
+                <h2 class="slide-title">01. El Problema</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                     <div>
-                        <h3 style="color: var(--neon-cyan);">Frontend</h3>
-                        <p>Angular 21 + ethers.js v6 | Conecta Pali Wallet</p>
+                        <p style="margin-bottom: 20px;">El <span class="warning">Copyright Office de EE.UU.</span>
+                            estableció en 2025:</p>
+                        <div class="tile" style="margin-bottom: 20px;">
+                            <i class="fa-solid fa-circle-xmark" style="color: #ff6b6b; margin-right: 10px;"></i>
+                            <span>Música <strong>100% generada por IA</strong> NO tiene copyright</span>
+                        </div>
+                        <div class="tile" style="margin-bottom: 20px;">
+                            <i class="fa-solid fa-circle-check"
+                                style="color: var(--neon-cyan); margin-right: 10px;"></i>
+                            <span>Música con <strong>autoría humana significativa</strong> SÍ se protege</span>
+                        </div>
+                        <p class="warning">⚠️ Los artistas necesitan demostrar "control creativo humano"</p>
+                    </div>
+                    <div class="image-box" style="height: 400px;">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80"
+                            alt="Music Production">
                     </div>
                 </div>
-                <div class="tile" style="display: flex; align-items: center; gap: 20px;">
-                    <i class="fa-solid fa-server" style="font-size: 40px; color: var(--neon-purple);"></i>
+            </div>
+
+            <!-- Slide 3: La Solución -->
+            <div class="slide-container">
+                <h2 class="slide-title">02. La Solución</h2>
+                <p style="margin-bottom: 30px; font-size: 22px;">0xSonata registra cada paso del proceso creativo con
+                    <span class="highlight">hash SHA-256 + timestamp en blockchain</span></p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="stat-box">
+                        <div class="stat-number">~$0.001</div>
+                        <div class="stat-label">Costo por usuario</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">Inmutable</div>
+                        <div class="stat-label">Evidencia en blockchain</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">zkSYS PoB</div>
+                        <div class="stat-label">Red zkSYS PoB Devnet</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">PDF</div>
+                        <div class="stat-label">Certificados descargables</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Los 5 Pasos -->
+            <div class="slide-container">
+                <h2 class="slide-title">03. Los 5 Pasos del Proceso</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="step-card">
+                        <div class="step-number">🤖 Paso 1</div>
+                        <p><strong>Prompt en Suno/Udio</strong> - El prompt exacto que usaste para generar la idea</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">✍️ Paso 2</div>
+                        <p><strong>Variaciones IA</strong> - Las diferentes opciones que la IA generó</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">⛓️ Paso 3</div>
+                        <p><strong>Tu Selección</strong> - Por qué elegiste esa variación (decisión humana)</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">📜 Paso 4</div>
+                        <p><strong>Edición DAW</strong> - Tu aporte humano en Ableton/FL Studio</p>
+                    </div>
+                    <div class="step-card" style="grid-column: span 2; border-color: var(--neon-cyan);">
+                        <div class="step-number" style="color: var(--neon-cyan);">💾 Paso 5</div>
+                        <p><strong>Master Final</strong> - El resultado final con hash registrado en blockchain</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Arquitectura -->
+            <div class="slide-container">
+                <h2 class="slide-title">04. Arquitectura Técnica</h2>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="tile" style="display: flex; align-items: center; gap: 20px;">
+                        <i class="fa-brands fa-angular" style="font-size: 40px; color: #dd0031;"></i>
+                        <div>
+                            <h3 style="color: var(--neon-cyan);">Frontend</h3>
+                            <p>Angular 21 + ethers.js v6 | Conecta Pali Wallet</p>
+                        </div>
+                    </div>
+                    <div class="tile" style="display: flex; align-items: center; gap: 20px;">
+                        <i class="fa-solid fa-server" style="font-size: 40px; color: var(--neon-purple);"></i>
+                        <div>
+                            <h3 style="color: var(--neon-cyan);">Backend</h3>
+                            <p>NestJS + PostgreSQL + TypeORM | Leaderboard y certificados</p>
+                        </div>
+                    </div>
+                    <div class="tile" style="display: flex; align-items: center; gap: 20px;">
+                        <i class="fa-solid fa-link" style="font-size: 40px; color: #00f3ff;"></i>
+                        <div>
+                            <h3 style="color: var(--neon-cyan);">Smart Contracts</h3>
+                            <p>Solidity 0.8.24 + OpenZeppelin | ERC-721 en zkSYS PoB Devnet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Smart Contract -->
+            <div class="slide-container">
+                <h2 class="slide-title">05. SonataNFT Contract</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                     <div>
-                        <h3 style="color: var(--neon-cyan);">Backend</h3>
-                        <p>NestJS + PostgreSQL + TypeORM | Leaderboard y certificados</p>
+                        <p style="margin-bottom: 20px;"><strong>Dirección:</strong></p>
+                        <div class="tile"
+                            style="font-family: monospace; font-size: 14px; word-break: break-all; background: rgba(0,0,0,0.3);">
+                            0x01c9A88bFe2a2B3729c3d97279Ca88F7cC3Ef373
+                        </div>
+                        <p style="margin-top: 15px;"><strong>Red:</strong> zkSYS PoB Devnet (57042)</p>
                     </div>
-                </div>
-                <div class="tile" style="display: flex; align-items: center; gap: 20px;">
-                    <i class="fa-solid fa-link" style="font-size: 40px; color: #00f3ff;"></i>
                     <div>
-                        <h3 style="color: var(--neon-cyan);">Smart Contracts</h3>
-                        <p>Solidity 0.8.24 + OpenZeppelin | ERC-721 en zkSYS PoB Devnet</p>
+                        <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">Funciones Principales</h3>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="tech-badge">mint()</div>
+                            <div class="tech-badge">addStep()</div>
+                            <div class="tech-badge">verify()</div>
+                            <div class="tech-badge">getProof()</div>
+                            <div class="tech-badge">getCreativeSteps()</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 6: Smart Contract -->
-        <div class="slide-container">
-            <h2 class="slide-title">05. SonataNFT Contract</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                <div>
-                    <p style="margin-bottom: 20px;"><strong>Dirección:</strong></p>
-                    <div class="tile" style="font-family: monospace; font-size: 14px; word-break: break-all; background: rgba(0,0,0,0.3);">
-                        0x01c9A88bFe2a2B3729c3d97279Ca88F7cC3Ef373
-                    </div>
-                    <p style="margin-top: 15px;"><strong>Red:</strong> zkSYS PoB Devnet (57042)</p>
-                </div>
-                <div>
-                    <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">Funciones Principales</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div class="tech-badge">mint()</div>
-                        <div class="tech-badge">addStep()</div>
-                        <div class="tech-badge">verify()</div>
-                        <div class="tech-badge">getProof()</div>
-                        <div class="tech-badge">getCreativeSteps()</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 7: Características -->
-        <div class="slide-container">
-            <h2 class="slide-title">06. Características</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
-                <div class="tile">
-                    <i class="fa-solid fa-robot" style="font-size: 30px; color: var(--neon-cyan); margin-bottom: 15px;"></i>
-                    <h3>Proceso con IA</h3>
-                    <p>Registra prompts, variaciones, selecciones y ediciones humanas</p>
-                </div>
-                <div class="tile">
-                    <i class="fa-solid fa-lock" style="font-size: 30px; color: var(--neon-purple); margin-bottom: 15px;"></i>
-                    <h3>Evidencia Inmutable</h3>
-                    <p>Hash SHA-256 + timestamp en blockchain</p>
-                </div>
-                <div class="tile">
-                    <i class="fa-solid fa-trophy" style="font-size: 30px; color: #ffd700; margin-bottom: 15px;"></i>
-                    <h3>Reputación</h3>
-                    <p>Sistema de tiers: Emergente → Bronce → Plata → Oro</p>
-                </div>
-                <div class="tile">
-                    <i class="fa-solid fa-users" style="font-size: 30px; color: var(--neon-cyan); margin-bottom: 15px;"></i>
-                    <h3>Colaboraciones</h3>
-                    <p>Project Vault con splits automáticos (ej: 50%-50%)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 8: Usuario Objetivo -->
-        <div class="slide-container">
-            <h2 class="slide-title">07. Público Objetivo</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                <div>
-                    <div class="tile" style="margin-bottom: 20px;">
-                        <i class="fa-solid fa-user" style="color: var(--neon-cyan); margin-right: 10px;"></i>
-                        <strong>Usuario Ideal:</strong>
-                        <ul style="margin-top: 15px; padding-left: 20px;">
-                            <li>Usa Suno o Udio ($10-30/mes)</li>
-                            <li>Generó 10+ canciones en 3 meses</li>
-                            <li>Quiere monetizar en Spotify/YouTube</li>
-                            <li>Edad: 18-35, productor emergente</li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
+            <!-- Slide 7: Características -->
+            <div class="slide-container">
+                <h2 class="slide-title">06. Características</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
                     <div class="tile">
-                        <i class="fa-solid fa-users" style="color: var(--neon-purple); margin-right: 10px;"></i>
-                        <strong>Dónde Encontrarlos:</strong>
-                        <ul style="margin-top: 15px; padding-left: 20px;">
-                            <li>r/SunoAI (150k+)</li>
-                            <li>r/UdioAI (80k+)</li>
-                            <li>Discord Suno (300k+)</li>
-                            <li>Discord Udio (250k+)</li>
+                        <i class="fa-solid fa-robot"
+                            style="font-size: 30px; color: var(--neon-cyan); margin-bottom: 15px;"></i>
+                        <h3>Proceso con IA</h3>
+                        <p>Registra prompts, variaciones, selecciones y ediciones humanas</p>
+                    </div>
+                    <div class="tile">
+                        <i class="fa-solid fa-lock"
+                            style="font-size: 30px; color: var(--neon-purple); margin-bottom: 15px;"></i>
+                        <h3>Evidencia Inmutable</h3>
+                        <p>Hash SHA-256 + timestamp en blockchain</p>
+                    </div>
+                    <div class="tile">
+                        <i class="fa-solid fa-trophy" style="font-size: 30px; color: #ffd700; margin-bottom: 15px;"></i>
+                        <h3>Reputación</h3>
+                        <p>Sistema de tiers: Emergente → Bronce → Plata → Oro</p>
+                    </div>
+                    <div class="tile">
+                        <i class="fa-solid fa-users"
+                            style="font-size: 30px; color: var(--neon-cyan); margin-bottom: 15px;"></i>
+                        <h3>Colaboraciones</h3>
+                        <p>Project Vault con splits automáticos (ej: 50%-50%)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Usuario Objetivo -->
+            <div class="slide-container">
+                <h2 class="slide-title">07. Público Objetivo</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <div class="tile" style="margin-bottom: 20px;">
+                            <i class="fa-solid fa-user" style="color: var(--neon-cyan); margin-right: 10px;"></i>
+                            <strong>Usuario Ideal:</strong>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>Usa Suno o Udio ($10-30/mes)</li>
+                                <li>Generó 10+ canciones en 3 meses</li>
+                                <li>Quiere monetizar en Spotify/YouTube</li>
+                                <li>Edad: 18-35, productor emergente</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tile">
+                            <i class="fa-solid fa-users" style="color: var(--neon-purple); margin-right: 10px;"></i>
+                            <strong>Dónde Encontrarlos:</strong>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>r/SunoAI (150k+)</li>
+                                <li>r/UdioAI (80k+)</li>
+                                <li>Discord Suno (300k+)</li>
+                                <li>Discord Udio (250k+)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Gamificación -->
+            <div class="slide-container">
+                <h2 class="slide-title">08. Sistema de Reputación</h2>
+                <div style="display: flex; justify-content: space-around; align-items: center;">
+                    <div class="stat-box" style="width: 200px;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">🥉</div>
+                        <div class="stat-number" style="font-size: 20px;">Bronce</div>
+                        <div class="stat-label">Primeros pasos</div>
+                    </div>
+                    <div class="stat-box" style="width: 200px;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">🥈</div>
+                        <div class="stat-number" style="font-size: 20px;">Plata</div>
+                        <div class="stat-label">Artista activo</div>
+                    </div>
+                    <div class="stat-box" style="width: 200px;">
+                        <div style="font-size: 40px; margin-bottom: 10px;">🥇</div>
+                        <div class="stat-number" style="font-size: 20px;">Oro</div>
+                        <div class="stat-label">Productor verificado</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 30px;">Gana puntos con mints y verificaciones de la comunidad
+                </p>
+            </div>
+
+            <!-- Slide 10: Roadmap -->
+            <div class="slide-container">
+                <h2 class="slide-title">09. Roadmap</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                    <div class="tile" style="border-top: 4px solid #00ff88;">
+                        <h3 style="color: #00ff88; margin-bottom: 15px;">✅ Q1 2026</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>Contrato SonataNFT</li>
+                            <li>Backend NestJS</li>
+                            <li>Frontend Angular</li>
+                            <li>Leaderboard</li>
+                        </ul>
+                    </div>
+                    <div class="tile" style="border-top: 4px solid var(--neon-cyan);">
+                        <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">📍 Q2 2026</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>Discord Suno/Udio</li>
+                            <li>Plugin Ableton/FL</li>
+                            <li>Certificados PDF</li>
+                            <li>Project Vault</li>
+                        </ul>
+                    </div>
+                    <div class="tile" style="border-top: 4px solid var(--neon-purple);">
+                        <h3 style="color: var(--neon-purple); margin-bottom: 15px;">🔮 Q3 2026</h3>
+                        <ul style="padding-left: 20px;">
+                            <li>Syscoin Mainnet</li>
+                            <li>DistroKid/TuneCore</li>
+                            <li>API pública</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 9: Gamificación -->
-        <div class="slide-container">
-            <h2 class="slide-title">08. Sistema de Reputación</h2>
-            <div style="display: flex; justify-content: space-around; align-items: center;">
-                <div class="stat-box" style="width: 200px;">
-                    <div style="font-size: 40px; margin-bottom: 10px;">🥉</div>
-                    <div class="stat-number" style="font-size: 20px;">Bronce</div>
-                    <div class="stat-label">Primeros pasos</div>
-                </div>
-                <div class="stat-box" style="width: 200px;">
-                    <div style="font-size: 40px; margin-bottom: 10px;">🥈</div>
-                    <div class="stat-number" style="font-size: 20px;">Plata</div>
-                    <div class="stat-label">Artista activo</div>
-                </div>
-                <div class="stat-box" style="width: 200px;">
-                    <div style="font-size: 40px; margin-bottom: 10px;">🥇</div>
-                    <div class="stat-number" style="font-size: 20px;">Oro</div>
-                    <div class="stat-label">Productor verificado</div>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 30px;">Gana puntos con mints y verificaciones de la comunidad</p>
-        </div>
-
-        <!-- Slide 10: Roadmap -->
-        <div class="slide-container">
-            <h2 class="slide-title">09. Roadmap</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-                <div class="tile" style="border-top: 4px solid #00ff88;">
-                    <h3 style="color: #00ff88; margin-bottom: 15px;">✅ Q1 2026</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>Contrato SonataNFT</li>
-                        <li>Backend NestJS</li>
-                        <li>Frontend Angular</li>
-                        <li>Leaderboard</li>
-                    </ul>
-                </div>
-                <div class="tile" style="border-top: 4px solid var(--neon-cyan);">
-                    <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">📍 Q2 2026</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>Discord Suno/Udio</li>
-                        <li>Plugin Ableton/FL</li>
-                        <li>Certificados PDF</li>
-                        <li>Project Vault</li>
-                    </ul>
-                </div>
-                <div class="tile" style="border-top: 4px solid var(--neon-purple);">
-                    <h3 style="color: var(--neon-purple); margin-bottom: 15px;">🔮 Q3 2026</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>Syscoin Mainnet</li>
-                        <li>DistroKid/TuneCore</li>
-                        <li>API pública</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 11: Demo -->
-        <div class="slide-container">
-            <h2 class="slide-title">10. ¡Pruébalo Ahora!</h2>
-            <div style="text-align: center;">
-                <div style="margin-bottom: 40px;">
-                    <p style="font-size: 24px; margin-bottom: 20px;">Visita <span class="highlight">0xsonata.site</span></p>
-                    <p>Conecta tu Pali Wallet y comienza a documentar tu proceso creativo</p>
-                </div>
-                <div style="display: flex; justify-content: center; gap: 30px;">
-                    <div class="stat-box">
-                        <i class="fa-solid fa-globe" style="font-size: 30px; color: var(--neon-cyan); margin-bottom: 10px;"></i>
-                        <div class="stat-label">0xsonata.site</div>
+            <!-- Slide 11: Demo -->
+            <div class="slide-container">
+                <h2 class="slide-title">10. ¡Pruébalo Ahora!</h2>
+                <div style="text-align: center;">
+                    <div style="margin-bottom: 40px;">
+                        <p style="font-size: 24px; margin-bottom: 20px;">Visita <span
+                                class="highlight">0xsonata.site</span></p>
+                        <p>Conecta tu Pali Wallet y comienza a documentar tu proceso creativo</p>
                     </div>
-                    <div class="stat-box">
-                        <i class="fa-brands fa-github" style="font-size: 30px; color: #fff; margin-bottom: 10px;"></i>
-                        <div class="stat-label">GitHub</div>
-                    </div>
-                    <div class="stat-box">
-                        <i class="fa-solid fa-flask" style="font-size: 30px; color: var(--neon-purple); margin-bottom: 10px;"></i>
-                        <div class="stat-label">Faucet: tSYS gratis</div>
+                    <div style="display: flex; justify-content: center; gap: 30px;">
+                        <div class="stat-box">
+                            <i class="fa-solid fa-globe"
+                                style="font-size: 30px; color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                            <div class="stat-label">0xsonata.site</div>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fa-brands fa-github"
+                                style="font-size: 30px; color: #fff; margin-bottom: 10px;"></i>
+                            <div class="stat-label">GitHub</div>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fa-solid fa-flask"
+                                style="font-size: 30px; color: var(--neon-purple); margin-bottom: 10px;"></i>
+                            <div class="stat-label">Faucet: tSYS gratis</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 12: Cierre -->
-        <div class="slide-container">
-            <div style="text-align: center;">
-                <div class="logo" style="position: static; margin-bottom: 40px;">
-                    <span class="logo-icon" style="font-size: 4rem;">𝄞</span>
-                    <span class="logo-text" style="font-size: 2.5rem;">0xSonata</span>
+            <!-- Slide 12: Cierre -->
+            <div class="slide-container">
+                <div style="text-align: center;">
+                    <div class="logo" style="position: static; margin-bottom: 40px;">
+                        <span class="logo-icon" style="font-size: 4rem;">𝄞</span>
+                        <span class="logo-text" style="font-size: 2.5rem;">0xSonata</span>
+                    </div>
+                    <h1 style="font-size: 50px;">TU MÚSICA<br><span style="color: var(--neon-purple);">TU AUTORÍA</span>
+                    </h1>
+                    <p style="color: var(--neon-cyan); margin-top: 30px; font-size: 22px;">Protege tu creatividad con
+                        blockchain</p>
+                    <div
+                        style="width: 200px; height: 4px; background: linear-gradient(to right, var(--neon-cyan), var(--neon-purple)); margin: 40px auto;">
+                    </div>
+                    <p style="color: #888; margin-top: 20px;">Hackathon Syscoin Proof-of-Builders 2026</p>
                 </div>
-                <h1 style="font-size: 50px;">TU MÚSICA<br><span style="color: var(--neon-purple);">TU AUTORÍA</span></h1>
-                <p style="color: var(--neon-cyan); margin-top: 30px; font-size: 22px;">Protege tu creatividad con blockchain</p>
-                <div style="width: 200px; height: 4px; background: linear-gradient(to right, var(--neon-cyan), var(--neon-purple)); margin: 40px auto;"></div>
-                <p style="color: #888; margin-top: 20px;">Hackathon Syscoin Proof-of-Builders 2026</p>
             </div>
         </div>
     </div>
-</div>
 
-<div class="nav-hint">Flechas ← → | Arrastra a BIT-BOT</div>
+    <div class="nav-hint">Flechas ← → | Arrastra a BIT-BOT</div>
 
-<script>
-    const viewport = document.getElementById('presentation-viewport');
-    const wrapper = document.getElementById('slide-wrapper');
-    const robot = document.getElementById('robot-agent');
-    const eyes = document.querySelectorAll('.eye');
-    const speech = document.getElementById('robot-speech');
-    const prevBtn = document.getElementById('prevSlide');
-    const nextBtn = document.getElementById('nextSlide');
-    const slideCount = document.getElementById('slideCount');
+    <script>
+        const viewport = document.getElementById('presentation-viewport');
+        const wrapper = document.getElementById('slide-wrapper');
+        const robot = document.getElementById('robot-agent');
+        const eyes = document.querySelectorAll('.eye');
+        const speech = document.getElementById('robot-speech');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        const slideCount = document.getElementById('slideCount');
 
-    let currentSlide = 0;
-    const totalSlides = 12;
+        let currentSlide = 0;
+        const totalSlides = 12;
 
-    const robotPositions = [
-        { bottom: '50px', right: '50px', color: '#00f3ff' },
-        { bottom: '50px', left: '50px', color: '#bc13fe' },
-        { top: '50px', right: '50px', color: '#00f3ff' },
-        { bottom: '300px', right: '100px', color: '#bc13fe' },
-        { top: '40%', left: '80%', color: '#00f3ff' },
-        { bottom: '150px', right: '50px', color: '#bc13fe' },
-        { top: '100px', left: '100px', color: '#00f3ff' },
-        { bottom: '50px', left: '500px', color: '#bc13fe' },
-        { top: '50px', left: '50px', color: '#00f3ff' },
-        { bottom: '200px', right: '50px', color: '#bc13fe' },
-        { top: '50%', left: '10%', color: '#00f3ff' },
-        { bottom: '50px', right: '150px', color: '#bc13fe' }
-    ];
+        const robotPositions = [
+            { bottom: '50px', right: '50px', color: '#00f3ff' },
+            { bottom: '50px', left: '50px', color: '#bc13fe' },
+            { top: '50px', right: '50px', color: '#00f3ff' },
+            { bottom: '300px', right: '100px', color: '#bc13fe' },
+            { top: '40%', left: '80%', color: '#00f3ff' },
+            { bottom: '150px', right: '50px', color: '#bc13fe' },
+            { top: '100px', left: '100px', color: '#00f3ff' },
+            { bottom: '50px', left: '500px', color: '#bc13fe' },
+            { top: '50px', left: '50px', color: '#00f3ff' },
+            { bottom: '200px', right: '50px', color: '#bc13fe' },
+            { top: '50%', left: '10%', color: '#00f3ff' },
+            { bottom: '50px', right: '150px', color: '#bc13fe' }
+        ];
 
-    let hasMovedManually = false;
+        let hasMovedManually = false;
 
-    function updatePresentation() {
-        wrapper.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+        function updatePresentation() {
+            wrapper.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
 
-        // Actualizar UI
-        slideCount.innerText = `${(currentSlide + 1).toString().padStart(2, '0')} / ${totalSlides}`;
-        prevBtn.disabled = currentSlide === 0;
-        nextBtn.disabled = currentSlide === totalSlides - 1;
+            // Actualizar UI
+            slideCount.innerText = `${(currentSlide + 1).toString().padStart(2, '0')} / ${totalSlides}`;
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
 
-        if (!hasMovedManually) {
-            const pos = robotPositions[currentSlide];
-            robot.style.transition = "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
+            if (!hasMovedManually) {
+                const pos = robotPositions[currentSlide];
+                robot.style.transition = "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
 
-            robot.style.top = pos.top || 'auto';
-            robot.style.bottom = pos.bottom || 'auto';
-            robot.style.left = pos.left || 'auto';
-            robot.style.right = pos.right || 'auto';
+                robot.style.top = pos.top || 'auto';
+                robot.style.bottom = pos.bottom || 'auto';
+                robot.style.left = pos.left || 'auto';
+                robot.style.right = pos.right || 'auto';
 
-            const robotBody = robot.querySelector('.robot-body');
-            robotBody.style.borderColor = pos.color;
-            robotBody.style.boxShadow = `0 0 20px ${pos.color}`;
+                const robotBody = robot.querySelector('.robot-body');
+                robotBody.style.borderColor = pos.color;
+                robotBody.style.boxShadow = `0 0 20px ${pos.color}`;
+            }
         }
-    }
 
-    // --- BUTTON CONTROLS ---
-    prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (currentSlide > 0) {
-            currentSlide--;
-            updatePresentation();
-        }
-    });
-
-    nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (currentSlide < totalSlides - 1) {
-            currentSlide++;
-            updatePresentation();
-        }
-    });
-
-    // --- LÓGICA DE ARRASTRE (DRAG & DROP) ---
-    let isDragging = false;
-    let startX, startY, initialX, initialY;
-
-    robot.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        hasMovedManually = true;
-        robot.style.transition = "none";
-
-        startX = e.clientX;
-        startY = e.clientY;
-
-        const rect = robot.getBoundingClientRect();
-        const viewRect = viewport.getBoundingClientRect();
-
-        initialX = rect.left - viewRect.left;
-        initialY = rect.top - viewRect.top;
-
-        e.stopPropagation();
-    });
-
-    window.addEventListener('mousemove', (e) => {
-        eyes.forEach(eye => {
-            const rect = eye.parentElement.getBoundingClientRect();
-            const eyeCenterX = rect.left + rect.width / 2;
-            const eyeCenterY = rect.top + rect.height / 2;
-            const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
-            const dist = 2;
-            eye.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist}px)`;
+        // --- BUTTON CONTROLS ---
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentSlide > 0) {
+                currentSlide--;
+                updatePresentation();
+            }
         });
 
-        if (isDragging) {
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updatePresentation();
+            }
+        });
 
-            let newX = initialX + dx;
-            let newY = initialY + dy;
+        // --- LÓGICA DE ARRASTRE (DRAG & DROP) ---
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
 
-            newX = Math.max(0, Math.min(newX, 1280 - 60));
-            newY = Math.max(0, Math.min(newY, 720 - 80));
+        robot.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            hasMovedManually = true;
+            robot.style.transition = "none";
 
-            robot.style.left = newX + 'px';
-            robot.style.top = newY + 'px';
-            robot.style.bottom = 'auto';
-            robot.style.right = 'auto';
-        }
-    });
+            startX = e.clientX;
+            startY = e.clientY;
 
-    window.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
+            const rect = robot.getBoundingClientRect();
+            const viewRect = viewport.getBoundingClientRect();
 
-    robot.addEventListener('click', (e) => {
-        if (Math.abs(e.clientX - startX) > 5) return;
+            initialX = rect.left - viewRect.left;
+            initialY = rect.top - viewRect.top;
 
-        speech.innerText = "¡0xSonata!";
-        speech.classList.add('active');
-        const robotBody = robot.querySelector('.robot-body');
-        robotBody.style.borderColor = "#ff4d4d";
-        eyes.forEach(eye => eye.style.background = "#ff4d4d");
+            e.stopPropagation();
+        });
 
-        setTimeout(() => {
-            speech.classList.remove('active');
-            robotBody.style.borderColor = "";
-            eyes.forEach(eye => eye.style.background = "");
-        }, 1000);
-    });
+        window.addEventListener('mousemove', (e) => {
+            eyes.forEach(eye => {
+                const rect = eye.parentElement.getBoundingClientRect();
+                const eyeCenterX = rect.left + rect.width / 2;
+                const eyeCenterY = rect.top + rect.height / 2;
+                const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+                const dist = 2;
+                eye.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist}px)`;
+            });
 
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) { currentSlide++; updatePresentation(); }
-        if (e.key === 'ArrowLeft' && currentSlide > 0) { currentSlide--; updatePresentation(); }
-    });
+            if (isDragging) {
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
 
-    updatePresentation();
-</script>
+                let newX = initialX + dx;
+                let newY = initialY + dy;
+
+                newX = Math.max(0, Math.min(newX, 1280 - 60));
+                newY = Math.max(0, Math.min(newY, 720 - 80));
+
+                robot.style.left = newX + 'px';
+                robot.style.top = newY + 'px';
+                robot.style.bottom = 'auto';
+                robot.style.right = 'auto';
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        robot.addEventListener('click', (e) => {
+            if (Math.abs(e.clientX - startX) > 5) return;
+
+            speech.innerText = "¡0xSonata!";
+            speech.classList.add('active');
+            const robotBody = robot.querySelector('.robot-body');
+            robotBody.style.borderColor = "#ff4d4d";
+            eyes.forEach(eye => eye.style.background = "#ff4d4d");
+
+            setTimeout(() => {
+                speech.classList.remove('active');
+                robotBody.style.borderColor = "";
+                eyes.forEach(eye => eye.style.background = "");
+            }, 1000);
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) { currentSlide++; updatePresentation(); }
+            if (e.key === 'ArrowLeft' && currentSlide > 0) { currentSlide--; updatePresentation(); }
+        });
+
+        updatePresentation();
+    </script>
 
 </body>
+
 </html>
