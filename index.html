@@ -437,6 +437,29 @@
             margin: 5px;
             color: var(--neon-cyan);
         }
+
+        /* --- LANGUAGE TOGGLE --- */
+        .lang-toggle {
+            position: absolute;
+            top: 40px;
+            right: 100px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 100;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .lang-toggle:hover { border-color: rgba(188, 19, 254, 0.5); }
+        .lang-toggle span { font-family: 'Orbitron'; font-size: 12px; font-weight: 700; letter-spacing: 2px; transition: color 0.3s; }
+        .lang-toggle .active-lang { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
+        .lang-toggle .inactive-lang { color: #555; }
+        .lang-toggle .lang-sep { width: 2px; height: 14px; background: rgba(255,255,255,0.1); border-radius: 2px; }
     </style>
 </head>
 
@@ -449,6 +472,13 @@
             <span class="logo-text">0xSonata</span>
         </div>
 
+
+        <!-- Language Toggle -->
+        <div class="lang-toggle" id="langToggle" title="Switch language">
+            <span id="langEN" class="active-lang">EN</span>
+            <span class="lang-sep"></span>
+            <span id="langES" class="inactive-lang">ES</span>
+        </div>
         <!-- UI Navigation Buttons -->
         <div class="ui-nav-panel">
             <button class="nav-button" id="prevSlide" title="Anterior"><i class="fas fa-arrow-left"></i></button>
@@ -482,40 +512,40 @@
                         <span class="logo-icon" style="font-size: 4rem;">𝄞</span>
                         <span class="logo-text" style="font-size: 2.5rem;">0xSonata</span>
                     </div>
-                    <h1 style="font-size: 42px; margin-bottom: 15px;">¿CREASTE MÚSICA<br>CON IA?</h1>
+                    <h1 style="font-size: 42px; margin-bottom: 15px;"><span data-i18n="s1.title">DID YOU CREATE MUSIC<br>WITH AI?</span></h1>
                     <div style="width: 150px; height: 4px; background: var(--neon-purple); margin: 20px auto;"></div>
-                    <p style="font-size: 24px; color: var(--neon-cyan); margin-bottom: 10px;">Protege tu autoría antes de que sea tarde</p>
-                    <p style="font-size: 16px; color: #888; margin-top: 25px;">Notario Digital Web3 para Artistas que Crean Música Usando Herramientas de IA</p>
-                    <p style="margin-top: 15px; color: #555; font-size: 14px;">🌐 0xsonata.site — Hackathon Syscoin Proof-of-Builders 2026</p>
+                    <p style="font-size: 24px; color: var(--neon-cyan); margin-bottom: 10px;"><span data-i18n="s1.sub1">Protect your authorship before it's too late</span></p>
+                    <p style="font-size: 16px; color: #888; margin-top: 25px;"><span data-i18n="s1.sub2">Web3 Digital Notary for Artists Creating Music Using AI Tools</span></p>
+                    <p style="margin-top: 15px; color: #555; font-size: 14px;"><span data-i18n="s1.footer">🌐 0xsonata.site — Hackathon Syscoin Proof-of-Builders 2026</span></p>
                 </div>
             </div>
 
             <!-- Slide 2: El Problema con Urgencia -->
             <div class="slide-container">
-                <h2 class="slide-title">01. Un Mercado de $6.65B en Riesgo</h2>
+                <h2 class="slide-title"><span data-i18n="s2.title">01. A $6.65B Market at Risk</span></h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                     <div>
                         <div class="stat-box" style="margin-bottom: 20px; border: 2px solid #ff6b6b;">
                             <div class="stat-number" style="color: #ff6b6b; font-size: 36px;">$6.65B</div>
-                            <div class="stat-label">Mercado de IA Musical en 2025 — Market.us</div>
+                            <div class="stat-label"><span data-i18n="s2.market">AI Music Market 2025 — Market.us</span></div>
                         </div>
                         <div class="tile" style="margin-bottom: 15px; border-left: 4px solid #ff6b6b;">
                             <i class="fa-solid fa-circle-xmark" style="color: #ff6b6b; margin-right: 10px;"></i>
-                            <span>Música <strong>100% IA</strong> → <span class="warning">Sin copyright</span></span>
+                            <span><span data-i18n="s2.no">Music <strong>100% AI</strong> → <span class="warning">No copyright</span></span></span>
                         </div>
                         <div class="tile" style="margin-bottom: 15px; border-left: 4px solid var(--neon-cyan);">
                             <i class="fa-solid fa-circle-check" style="color: var(--neon-cyan); margin-right: 10px;"></i>
-                            <span>Con <strong>autoría humana</strong> → <span class="highlight">Protegida</span></span>
+                            <span><span data-i18n="s2.yes">With <strong>human authorship</strong> → <span class="highlight">Protected</span></span></span>
                         </div>
-                        <p style="font-size: 14px; color: #888; margin-top: 15px;">— Copyright Office de EE.UU., Enero 2025</p>
+                        <p style="font-size: 14px; color: #888; margin-top: 15px;"><span data-i18n="s2.source">— US Copyright Office, January 2025</span></p>
                     </div>
                     <div>
                         <div class="tile" style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); height: 100%;">
-                            <h3 style="color: #ff6b6b; margin-bottom: 15px;">😰 El Dolor del Artista</h3>
-                            <p style="font-size: 16px; line-height: 1.8; color: #b0b0c0;">"Generé 50 canciones en Suno, pago $30/mes... y ahora me dicen que <span class="warning">no puedo copyrightear ninguna</span>."</p>
+                            <h3 style="color: #ff6b6b; margin-bottom: 15px;"><span data-i18n="s2.pain">😰 The Artist's Pain</span></h3>
+                            <p style="font-size: 16px; line-height: 1.8; color: #b0b0c0;"><span data-i18n="s2.quote">"I generated 50 songs on Suno, I pay $30/month... and now they tell me I <span class="warning">can't copyright any of them</span>."</span></p>
                             <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
-                                <p style="font-size: 14px;">💰 Registrar en Copyright Office: <strong>$45 por canción</strong></p>
-                                <p style="font-size: 14px; margin-top: 5px;">📋 Sin evidencia de proceso: <strong>Rechazo automático</strong></p>
+                                <p style="font-size: 14px;"><span data-i18n="s2.cost">💰 Register at Copyright Office: <strong>$45 per song</strong></span></p>
+                                <p style="font-size: 14px; margin-top: 5px;"><span data-i18n="s2.reject">📋 No process evidence: <strong>Automatic rejection</strong></span></p>
                             </div>
                         </div>
                     </div>
@@ -524,155 +554,155 @@
 
             <!-- Slide 3: Cómo Funciona (5 Pasos) -->
             <div class="slide-container">
-                <h2 class="slide-title">02. Cómo Funciona 0xSonata</h2>
-                <p style="margin-bottom: 20px; font-size: 18px;">Registra cada paso de tu proceso creativo como <span class="highlight">cadena de evidencia inmutable</span></p>
+                <h2 class="slide-title"><span data-i18n="s3.title">02. How 0xSonata Works</span></h2>
+                <p style="margin-bottom: 20px; font-size: 18px;"><span data-i18n="s3.sub">Records each step of your creative process as an <span class="highlight">immutable evidence chain</span></span></p>
                 <div style="display: flex; gap: 12px; align-items: stretch;">
                     <div class="step-card" style="flex: 1; text-align: center; padding: 15px;">
                         <div style="font-size: 28px; margin-bottom: 8px;">🤖</div>
-                        <div class="step-number" style="font-size: 14px;">Paso 1</div>
-                        <p style="font-size: 13px;"><strong>Prompt</strong><br>El texto exacto en Suno/Udio</p>
+                        <div class="step-number" style="font-size: 14px;" data-i18n="s3.step1">Step 1</div>
+                        <p style="font-size: 13px;"><strong data-i18n="s3.d1">Prompt</strong><br>The exact text in Suno/Udio</p>
                     </div>
                     <div style="display: flex; align-items: center; color: var(--neon-cyan); font-size: 20px;">→</div>
                     <div class="step-card" style="flex: 1; text-align: center; padding: 15px;">
                         <div style="font-size: 28px; margin-bottom: 8px;">✍️</div>
-                        <div class="step-number" style="font-size: 14px;">Paso 2</div>
-                        <p style="font-size: 13px;"><strong>Variaciones</strong><br>Opciones generadas por la IA</p>
+                        <div class="step-number" style="font-size: 14px;" data-i18n="s3.step2">Step 2</div>
+                        <p style="font-size: 13px;"><strong data-i18n="s3.d2">Variations</strong><br>Options generated by AI</p>
                     </div>
                     <div style="display: flex; align-items: center; color: var(--neon-cyan); font-size: 20px;">→</div>
                     <div class="step-card" style="flex: 1; text-align: center; padding: 15px;">
                         <div style="font-size: 28px; margin-bottom: 8px;">⛓️</div>
-                        <div class="step-number" style="font-size: 14px;">Paso 3</div>
-                        <p style="font-size: 13px;"><strong>Selección</strong><br>Tu decisión humana</p>
+                        <div class="step-number" style="font-size: 14px;" data-i18n="s3.step3">Step 3</div>
+                        <p style="font-size: 13px;"><strong data-i18n="s3.d3">Selection</strong><br>Your human decision</p>
                     </div>
                     <div style="display: flex; align-items: center; color: var(--neon-cyan); font-size: 20px;">→</div>
                     <div class="step-card" style="flex: 1; text-align: center; padding: 15px;">
                         <div style="font-size: 28px; margin-bottom: 8px;">📜</div>
-                        <div class="step-number" style="font-size: 14px;">Paso 4</div>
-                        <p style="font-size: 13px;"><strong>Edición DAW</strong><br>Tu aporte en Ableton/FL</p>
+                        <div class="step-number" style="font-size: 14px;" data-i18n="s3.step4">Step 4</div>
+                        <p style="font-size: 13px;"><strong data-i18n="s3.d4">DAW Editing</strong><br>Your input in Ableton/FL</p>
                     </div>
                     <div style="display: flex; align-items: center; color: var(--neon-cyan); font-size: 20px;">→</div>
                     <div class="step-card" style="flex: 1; text-align: center; padding: 15px; border-color: var(--neon-cyan);">
                         <div style="font-size: 28px; margin-bottom: 8px;">💾</div>
-                        <div class="step-number" style="font-size: 14px; color: var(--neon-cyan);">Paso 5</div>
-                        <p style="font-size: 13px;"><strong>Master Final</strong><br>Hash registrado on-chain</p>
+                        <div class="step-number" style="font-size: 14px; color: var(--neon-cyan);" data-i18n="s3.step5">Step 5</div>
+                        <p style="font-size: 13px;"><strong data-i18n="s3.d5">Final Master</strong><br>Hash recorded on-chain</p>
                     </div>
                 </div>
                 <div class="tile" style="margin-top: 20px; text-align: center; border: 1px solid rgba(0, 243, 255, 0.3);">
-                    <p style="font-size: 16px;">Cada paso genera un <span class="highlight">hash SHA-256 con timestamp</span> → Certificado PDF descargable para Copyright Office</p>
+                    <p style="font-size: 16px;"><span data-i18n="s3.bottom">Each step generates a <span class="highlight">SHA-256 hash with timestamp</span> → Downloadable PDF certificate for Copyright Office</span></p>
                 </div>
             </div>
 
             <!-- Slide 4: Producto en Producción -->
             <div class="slide-container">
-                <h2 class="slide-title">03. Producto Funcionando ✅</h2>
-                <p style="margin-bottom: 20px; font-size: 18px;">No es un concepto. <span class="highlight">Ya está en producción</span> en 0xsonata.site</p>
+                <h2 class="slide-title"><span data-i18n="s4.title">03. Working Product ✅</span></h2>
+                <p style="margin-bottom: 20px; font-size: 18px;"><span data-i18n="s4.sub">Not a concept. <span class="highlight">Already in production</span> at 0xsonata.site</span></p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="tile" style="border-top: 3px solid var(--neon-cyan);">
-                        <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">🏠 Leaderboard</h3>
-                        <p style="font-size: 15px;">Ranking de artistas con podio Top 3, sistema de alas animadas, score de integridad y tiers (Emergente→Oro)</p>
+                        <h3 style="color: var(--neon-cyan); margin-bottom: 10px;"><span data-i18n="s4.f1t">🏠 Leaderboard</span></h3>
+                        <p style="font-size: 15px;"><span data-i18n="s4.f1d">Artist ranking with Top 3 podium, animated wings system, integrity score and tiers (Emergent→Gold)</span></p>
                     </div>
                     <div class="tile" style="border-top: 3px solid var(--neon-purple);">
-                        <h3 style="color: var(--neon-purple); margin-bottom: 10px;">🎵 Mint 3 Fases</h3>
-                        <p style="font-size: 15px;">Upload → Documenta 5 pasos → Completo. Con recuperación automática de Token ID y sync a backend</p>
+                        <h3 style="color: var(--neon-purple); margin-bottom: 10px;"><span data-i18n="s4.f2t">🎵 Mint 3 Phases</span></h3>
+                        <p style="font-size: 15px;"><span data-i18n="s4.f2d">Upload → Document 5 steps → Complete. With automatic Token ID recovery and backend sync</span></p>
                     </div>
                     <div class="tile" style="border-top: 3px solid #00ff88;">
-                        <h3 style="color: #00ff88; margin-bottom: 10px;">✅ Verificación + Stake</h3>
-                        <p style="font-size: 15px;">Deposita 0.001 tSYS, verifica artistas. Stake como garantía de honestidad</p>
+                        <h3 style="color: #00ff88; margin-bottom: 10px;"><span data-i18n="s4.f3t">✅ Verification + Stake</span></h3>
+                        <p style="font-size: 15px;"><span data-i18n="s4.f3d">Deposit 0.001 tSYS, verify artists. Stake as honesty guarantee</span></p>
                     </div>
                     <div class="tile" style="border-top: 3px solid #ffd700;">
-                        <h3 style="color: #ffd700; margin-bottom: 10px;">🔧 Herramientas + i18n</h3>
-                        <p style="font-size: 15px;">Página de tools curada, tema claro/oscuro, soporte ES/EN, certificados PDF</p>
+                        <h3 style="color: #ffd700; margin-bottom: 10px;"><span data-i18n="s4.f4t">🔧 Tools + i18n</span></h3>
+                        <p style="font-size: 15px;"><span data-i18n="s4.f4d">Curated tools page, light/dark theme, ES/EN support, PDF certificates</span></p>
                     </div>
                 </div>
                 <div style="display: flex; gap: 15px; margin-top: 20px;">
                     <div class="stat-box" style="flex: 1;">
                         <div class="stat-number" style="font-size: 22px;">19</div>
-                        <div class="stat-label">Tests Pasando</div>
+                        <div class="stat-label" data-i18n="s4.tests">Tests Passing</div>
                     </div>
                     <div class="stat-box" style="flex: 1;">
                         <div class="stat-number" style="font-size: 22px;">2</div>
-                        <div class="stat-label">Smart Contracts</div>
+                        <div class="stat-label" data-i18n="s4.contracts">Smart Contracts</div>
                     </div>
                     <div class="stat-box" style="flex: 1;">
                         <div class="stat-number" style="font-size: 22px;">Docker</div>
-                        <div class="stat-label">Deploy con 1 cmd</div>
+                        <div class="stat-label" data-i18n="s4.deploy">Deploy with 1 cmd</div>
                     </div>
                 </div>
             </div>
 
             <!-- Slide 5: ¿Por qué Syscoin? -->
             <div class="slide-container">
-                <h2 class="slide-title">04. ¿Por Qué Syscoin?</h2>
-                <p style="margin-bottom: 25px; font-size: 18px;">0xSonata eligió <span class="highlight">zkSYS PoB Devnet</span> por razones estratégicas</p>
+                <h2 class="slide-title"><span data-i18n="s5.title">04. Why Syscoin?</span></h2>
+                <p style="margin-bottom: 25px; font-size: 18px;"><span data-i18n="s5.sub">0xSonata chose <span class="highlight">zkSYS PoB Devnet</span> for strategic reasons</span></p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="tile" style="border-left: 4px solid var(--neon-cyan);">
                         <i class="fa-solid fa-coins" style="font-size: 28px; color: var(--neon-cyan); margin-bottom: 12px;"></i>
-                        <h3>Gas Ultra-Bajo</h3>
-                        <p>~$0.0001 USD por transacción. Un artista documenta 5 pasos por <strong>menos de $0.001</strong></p>
+                        <h3 data-i18n="s5.f1t">Ultra-Low Gas</h3>
+                        <p><span data-i18n="s5.f1d">~$0.0001 USD per transaction. An artist documents 5 steps for <strong>less than $0.001</strong></span></p>
                     </div>
                     <div class="tile" style="border-left: 4px solid var(--neon-purple);">
                         <i class="fa-solid fa-bolt" style="font-size: 28px; color: var(--neon-purple); margin-bottom: 12px;"></i>
-                        <h3>Velocidad zkRollup</h3>
-                        <p>Confirmación rápida. UX fluida: mint + 5 pasos en <strong>menos de 2 minutos</strong></p>
+                        <h3 data-i18n="s5.f2t">zkRollup Speed</h3>
+                        <p><span data-i18n="s5.f2d">Fast confirmation. Smooth UX: mint + 5 steps in <strong>less than 2 minutes</strong></span></p>
                     </div>
                     <div class="tile" style="border-left: 4px solid #ffd700;">
                         <i class="fa-solid fa-wallet" style="font-size: 28px; color: #ffd700; margin-bottom: 12px;"></i>
-                        <h3>Pali Wallet</h3>
-                        <p>Wallet nativa del ecosistema. Integración directa, <strong>auto-switch de red</strong></p>
+                        <h3 data-i18n="s5.f3t">Pali Wallet</h3>
+                        <p><span data-i18n="s5.f3d">Ecosystem native wallet. Direct integration, <strong>auto-switch network</strong></span></p>
                     </div>
                     <div class="tile" style="border-left: 4px solid #00ff88;">
                         <i class="fa-solid fa-road" style="font-size: 28px; color: #00ff88; margin-bottom: 12px;"></i>
-                        <h3>Path a Mainnet</h3>
-                        <p>Devnet → Testnet → <strong>Syscoin Mainnet</strong> (Chain ID 57). Mismos contratos, producción real</p>
+                        <h3 data-i18n="s5.f4t">Path to Mainnet</h3>
+                        <p><span data-i18n="s5.f4d">Devnet → Testnet → <strong>Syscoin Mainnet</strong> (Chain ID 57). Same contracts, real production</span></p>
                     </div>
                 </div>
                 <div class="tile" style="margin-top: 15px; text-align: center; background: rgba(0, 243, 255, 0.05); border: 1px solid rgba(0, 243, 255, 0.2);">
-                    <p style="font-size: 15px;">🚰 <strong>Faucet gratuito</strong> disponible → Cualquiera puede probar sin gastar dinero real</p>
+                    <p style="font-size: 15px;"><span data-i18n="s5.faucet">🚰 <strong>Free faucet</strong> available → Anyone can try without spending real money</span></p>
                 </div>
             </div>
 
             <!-- Slide 6: Arquitectura 3 Capas -->
             <div class="slide-container">
-                <h2 class="slide-title">05. Arquitectura del Smart Contract</h2>
+                <h2 class="slide-title"><span data-i18n="s6.title">05. Smart Contract Architecture</span></h2>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div class="tile" style="display: flex; align-items: center; gap: 20px; border-left: 4px solid var(--neon-cyan);">
                         <div style="min-width: 90px; text-align: center;">
                             <div style="font-size: 32px;">⛓️</div>
-                            <p style="font-size: 12px; color: var(--neon-cyan); font-weight: bold;">CAPA 1</p>
+                            <p style="font-size: 12px; color: var(--neon-cyan); font-weight: bold;" data-i18n="s6.l1">LAYER 1</p>
                         </div>
                         <div>
-                            <h3 style="color: var(--neon-cyan);">Creative Process Chain</h3>
-                            <p><span class="highlight">mint()</span> + <span class="highlight">addStep()</span> — Registra audio hash + 5 pasos del proceso creativo como ERC-721</p>
+                            <h3 style="color: var(--neon-cyan);" data-i18n="s6.l1t">Creative Process Chain</h3>
+                            <p><span data-i18n="s6.l1d"><span class="highlight">mint()</span> + <span class="highlight">addStep()</span> — Records audio hash + 5 creative process steps as ERC-721</span></p>
                         </div>
                     </div>
                     <div class="tile" style="display: flex; align-items: center; gap: 20px; border-left: 4px solid var(--neon-purple);">
                         <div style="min-width: 90px; text-align: center;">
                             <div style="font-size: 32px;">🔐</div>
-                            <p style="font-size: 12px; color: var(--neon-purple); font-weight: bold;">CAPA 2</p>
+                            <p style="font-size: 12px; color: var(--neon-purple); font-weight: bold;" data-i18n="s6.l2">LAYER 2</p>
                         </div>
                         <div>
-                            <h3 style="color: var(--neon-purple);">Verificación con Stake</h3>
-                            <p><span class="highlight">deposit()</span> + <span class="highlight">verify()</span> — Stake 0.001 tSYS mínimo. No verificas tus propias ideas. Skin in the game</p>
+                            <h3 style="color: var(--neon-purple);" data-i18n="s6.l2t">Stake Verification</h3>
+                            <p><span data-i18n="s6.l2d"><span class="highlight">deposit()</span> + <span class="highlight">verify()</span> — Stake 0.001 tSYS minimum. Can't verify your own ideas. Skin in the game</span></p>
                         </div>
                     </div>
                     <div class="tile" style="display: flex; align-items: center; gap: 20px; border-left: 4px solid #ffd700;">
                         <div style="min-width: 90px; text-align: center;">
                             <div style="font-size: 32px;">🏆</div>
-                            <p style="font-size: 12px; color: #ffd700; font-weight: bold;">CAPA 3</p>
+                            <p style="font-size: 12px; color: #ffd700; font-weight: bold;" data-i18n="s6.l3">LAYER 3</p>
                         </div>
                         <div>
-                            <h3 style="color: #ffd700;">Reputación y Tiers</h3>
-                            <p><span class="highlight">getTier()</span> — Emergente→Bronce→Plata→Oro. Basado en mints, verificaciones y antigüedad. On-chain</p>
+                            <h3 style="color: #ffd700;" data-i18n="s6.l3t">Reputation & Tiers</h3>
+                            <p><span data-i18n="s6.l3d"><span class="highlight">getTier()</span> — Emergent→Bronze→Silver→Gold. Based on mints, verifications and account age. On-chain</span></p>
                         </div>
                     </div>
                     <div class="tile" style="display: flex; align-items: center; gap: 20px; border-left: 4px solid #00ff88;">
                         <div style="min-width: 90px; text-align: center;">
                             <div style="font-size: 32px;">🤝</div>
-                            <p style="font-size: 12px; color: #00ff88; font-weight: bold;">CAPA 4</p>
+                            <p style="font-size: 12px; color: #00ff88; font-weight: bold;" data-i18n="s6.l4">LAYER 4</p>
                         </div>
                         <div>
-                            <h3 style="color: #00ff88;">ProjectVault (Revenue Sharing)</h3>
-                            <p><span class="highlight">createVault()</span> + <span class="highlight">fundVault()</span> — Splits automáticos en basis points. Colaboraciones transparentes</p>
+                            <h3 style="color: #00ff88;" data-i18n="s6.l4t">ProjectVault (Revenue Sharing)</h3>
+                            <p><span data-i18n="s6.l4d"><span class="highlight">createVault()</span> + <span class="highlight">fundVault()</span> — Automatic splits in basis points. Transparent collaborations</span></p>
                         </div>
                     </div>
                 </div>
@@ -680,27 +710,27 @@
 
             <!-- Slide 7: Características Únicas -->
             <div class="slide-container">
-                <h2 class="slide-title">06. Lo que nos Diferencia</h2>
+                <h2 class="slide-title"><span data-i18n="s7.title">06. What Sets Us Apart</span></h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="tile" style="border-top: 3px solid var(--neon-cyan);">
                         <i class="fa-solid fa-file-pdf" style="font-size: 28px; color: var(--neon-cyan); margin-bottom: 12px;"></i>
-                        <h3>Certificados PDF</h3>
-                        <p>Genera PDFs con tu cadena de evidencia creativa. <strong>Presentable al Copyright Office</strong></p>
+                        <h3 data-i18n="s7.f1t">PDF Certificates</h3>
+                        <p><span data-i18n="s7.f1d">Generate PDFs with your creative evidence chain. <strong>Presentable to the Copyright Office</strong></span></p>
                     </div>
                     <div class="tile" style="border-top: 3px solid var(--neon-purple);">
                         <i class="fa-solid fa-handshake" style="font-size: 28px; color: var(--neon-purple); margin-bottom: 12px;"></i>
-                        <h3>ProjectVault</h3>
-                        <p>Colaboraciones con <strong>revenue sharing automático</strong>. Splits en smart contract, sin intermediarios</p>
+                        <h3 data-i18n="s7.f2t">ProjectVault</h3>
+                        <p><span data-i18n="s7.f2d">Collaborations with <strong>automatic revenue sharing</strong>. Splits in smart contract, no middlemen</span></p>
                     </div>
                     <div class="tile" style="border-top: 3px solid #ffd700;">
                         <i class="fa-solid fa-scale-balanced" style="font-size: 28px; color: #ffd700; margin-bottom: 12px;"></i>
-                        <h3>Verificación Honesta</h3>
-                        <p>Stake como garantía. <strong>No puedes verificarte a ti mismo</strong>. Peso de voto escala con tu tier</p>
+                        <h3 data-i18n="s7.f3t">Honest Verification</h3>
+                        <p><span data-i18n="s7.f3d">Stake as guarantee. <strong>You can't verify yourself</strong>. Vote weight scales with your tier</span></p>
                     </div>
                     <div class="tile" style="border-top: 3px solid #00ff88;">
                         <i class="fa-solid fa-dollar-sign" style="font-size: 28px; color: #00ff88; margin-bottom: 12px;"></i>
-                        <h3>Gratis para Empezar</h3>
-                        <p>Faucet con tSYS gratis. Gas ~$0.0001. <strong>Un artista no gasta más de $0.001</strong></p>
+                        <h3 data-i18n="s7.f4t">Free to Start</h3>
+                        <p><span data-i18n="s7.f4d">Faucet with free tSYS. Gas ~$0.0001. <strong>An artist spends no more than $0.001</strong></span></p>
                     </div>
                 </div>
                 <div class="tile" style="margin-top: 15px; text-align: center; display: flex; justify-content: space-around;">
@@ -715,25 +745,25 @@
 
             <!-- Slide 8: Público + Mercado -->
             <div class="slide-container">
-                <h2 class="slide-title">07. Mercado Objetivo</h2>
+                <h2 class="slide-title"><span data-i18n="s8.title">07. Target Market</span></h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
                     <div>
                         <div class="tile" style="margin-bottom: 15px; height: calc(100% - 15px);">
-                            <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">👤 Usuario Ideal</h3>
+                            <h3 style="color: var(--neon-cyan); margin-bottom: 15px;"><span data-i18n="s8.ideal">👤 Ideal User</span></h3>
                             <ul style="padding-left: 20px; line-height: 2;">
-                                <li>Usa <strong>Suno o Udio</strong> ($10-30/mes)</li>
-                                <li>Generó <strong>10+ canciones</strong> en 3 meses</li>
-                                <li>Quiere monetizar en <strong>Spotify/YouTube</strong></li>
-                                <li>Leyó sobre el <strong>ruling 2025</strong></li>
-                                <li>Tiene <span class="warning">MIEDO</span> de perder su trabajo</li>
-                                <li>Edad: <strong>18-35</strong>, productor emergente</li>
+                                <li><span data-i18n="s8.u1">Uses <strong>Suno or Udio</strong> ($10-30/month)</span></li>
+                                <li><span data-i18n="s8.u2">Generated <strong>10+ songs</strong> in 3 months</span></li>
+                                <li><span data-i18n="s8.u3">Wants to monetize on <strong>Spotify/YouTube</strong></span></li>
+                                <li><span data-i18n="s8.u4">Read about the <strong>2025 ruling</strong></span></li>
+                                <li><span data-i18n="s8.u5">Has <span class="warning">FEAR</span> of losing their work</span></li>
+                                <li><span data-i18n="s8.u6">Age: <strong>18-35</strong>, emerging producer</span></li>
                             </ul>
                         </div>
                     </div>
                     <div>
                         <div class="stat-box" style="margin-bottom: 15px;">
                             <div class="stat-number">780k+</div>
-                            <div class="stat-label">Comunidad combinada (Reddit + Discord)</div>
+                            <div class="stat-label" data-i18n="s8.community">Combined community (Reddit + Discord)</div>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                             <div class="tile" style="text-align: center; padding: 15px;">
@@ -759,7 +789,7 @@
 
             <!-- Slide 9: User Stories -->
             <div class="slide-container">
-                <h2 class="slide-title">08. Historias de Usuarios</h2>
+                <h2 class="slide-title"><span data-i18n="s9.title">08. User Stories</span></h2>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div class="tile" style="display: flex; gap: 20px; align-items: center;">
                         <div style="min-width: 60px; text-align: center;">
@@ -767,8 +797,8 @@
                             <p style="font-size: 12px; color: var(--neon-cyan); margin-top: 5px; font-weight: bold;">Jake, 22</p>
                         </div>
                         <div>
-                            <p style="color: #ff6b6b; font-size: 14px; margin-bottom: 5px;"><strong>"Pago $30/mes en Suno y no puedo copyrightear ninguna canción"</strong></p>
-                            <p style="font-size: 14px;"><span style="color: var(--neon-purple); font-weight: bold;">Con 0xSonata:</span> Registra su prompt, variaciones y ediciones en DAW. Genera certificado PDF y sube a DistroKid con confianza</p>
+                            <p style="color: #ff6b6b; font-size: 14px; margin-bottom: 5px;"><strong><span data-i18n="s9.j.q">"I pay $30/month on Suno and I can't copyright any song"</span></strong></p>
+                            <p style="font-size: 14px;"><span data-i18n="s9.j.a"><span style="color: var(--neon-purple); font-weight: bold;">With 0xSonata:</span> Records prompt, variations and DAW edits. Generates PDF certificate and uploads to DistroKid with confidence</span></p>
                         </div>
                     </div>
                     <div class="tile" style="display: flex; gap: 20px; align-items: center;">
@@ -777,8 +807,8 @@
                             <p style="font-size: 12px; color: var(--neon-purple); margin-top: 5px; font-weight: bold;">Valeria, 26</p>
                         </div>
                         <div>
-                            <p style="color: #ff6b6b; font-size: 14px; margin-bottom: 5px;"><strong>"Mi productor usó mi beat de Udio sin darme crédito"</strong></p>
-                            <p style="font-size: 14px;"><span style="color: var(--neon-purple); font-weight: bold;">Con 0xSonata:</span> Timestamp inmutable en blockchain. Si alguien reclama su beat, ella tiene prueba fechada de anterioridad</p>
+                            <p style="color: #ff6b6b; font-size: 14px; margin-bottom: 5px;"><strong><span data-i18n="s9.v.q">"My producer used my Udio beat without giving me credit"</span></strong></p>
+                            <p style="font-size: 14px;"><span data-i18n="s9.v.a"><span style="color: var(--neon-purple); font-weight: bold;">With 0xSonata:</span> Immutable timestamp on blockchain. If someone claims her beat, she has dated proof of priority</span></p>
                         </div>
                     </div>
                     <div class="tile" style="display: flex; gap: 20px; align-items: center;">
@@ -787,8 +817,8 @@
                             <p style="font-size: 12px; color: #00ff88; margin-top: 5px; font-weight: bold;">Andrés & Camila</p>
                         </div>
                         <div>
-                            <p style="color: #ff6b6b; font-size: 14px; margin-bottom: 5px;"><strong>"Colaboramos en un EP pero no sabemos cómo dividir las regalías"</strong></p>
-                            <p style="font-size: 14px;"><span style="color: var(--neon-purple); font-weight: bold;">Con ProjectVault:</span> Splits automáticos 50-50 en smart contract. Sin intermediarios, sin discusiones</p>
+                            <p style="color: #ff6b6b; font-size: 14px; margin-bottom: 5px;"><strong><span data-i18n="s9.c.q">"We collaborated on an EP but don't know how to split royalties"</span></strong></p>
+                            <p style="font-size: 14px;"><span data-i18n="s9.c.a"><span style="color: var(--neon-purple); font-weight: bold;">With ProjectVault:</span> Automatic 50-50 splits in smart contract. No middlemen, no arguments</span></p>
                         </div>
                     </div>
                 </div>
@@ -796,68 +826,68 @@
 
             <!-- Slide 10: Roadmap + Tracción -->
             <div class="slide-container">
-                <h2 class="slide-title">09. Roadmap y Tracción</h2>
+                <h2 class="slide-title"><span data-i18n="s10.title">09. Roadmap & Traction</span></h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                     <div class="tile" style="border-top: 4px solid #00ff88;">
-                        <h3 style="color: #00ff88; margin-bottom: 12px; font-size: 16px;">✅ Q1 2026 — HOY</h3>
+                        <h3 style="color: #00ff88; margin-bottom: 12px; font-size: 16px;"><span data-i18n="s10.q1">✅ Q1 2026 — TODAY</span></h3>
                         <ul style="padding-left: 15px; font-size: 14px; line-height: 1.8;">
                             <li>SonataNFT + ProjectVault</li>
                             <li>Frontend Angular 21</li>
                             <li>Backend NestJS + PostgreSQL</li>
-                            <li>Leaderboard con tiers</li>
-                            <li>Verificación con stake</li>
+                            <li data-i18n="s10.q1f5">Leaderboard with tiers</li>
+                            <li data-i18n="s10.q1f6">Verification with stake</li>
                             <li>19 tests ✅</li>
                         </ul>
                     </div>
                     <div class="tile" style="border-top: 4px solid var(--neon-cyan);">
-                        <h3 style="color: var(--neon-cyan); margin-bottom: 12px; font-size: 16px;">📍 Q2 2026</h3>
+                        <h3 style="color: var(--neon-cyan); margin-bottom: 12px; font-size: 16px;"><span data-i18n="s10.q2">📍 Q2 2026</span></h3>
                         <ul style="padding-left: 15px; font-size: 14px; line-height: 1.8;">
                             <li>Bot Discord Suno/Udio</li>
                             <li>Plugin Ableton/FL Studio</li>
-                            <li>Certificados PDF v2</li>
-                            <li>IPFS para archivos</li>
+                            <li data-i18n="s10.q2f3">PDF Certificates v2</li>
+                            <li data-i18n="s10.q2f4">IPFS for files</li>
                         </ul>
                     </div>
                     <div class="tile" style="border-top: 4px solid var(--neon-purple);">
-                        <h3 style="color: var(--neon-purple); margin-bottom: 12px; font-size: 16px;">🔮 Q3 2026</h3>
+                        <h3 style="color: var(--neon-purple); margin-bottom: 12px; font-size: 16px;"><span data-i18n="s10.q3">🔮 Q3 2026</span></h3>
                         <ul style="padding-left: 15px; font-size: 14px; line-height: 1.8;">
                             <li><strong>Syscoin Mainnet</strong></li>
                             <li>DistroKid / TuneCore</li>
-                            <li>API pública</li>
+                            <li data-i18n="s10.q3f3">Public API</li>
                             <li>Mobile app</li>
                         </ul>
                     </div>
                 </div>
                 <div class="tile" style="text-align: center; background: rgba(0, 255, 136, 0.05); border: 1px solid rgba(0, 255, 136, 0.2);">
-                    <p style="font-size: 16px;">⚡ <strong>Todo el Q1 está COMPLETADO</strong> — Producto en producción: <span class="highlight">0xsonata.site</span></p>
+                    <p style="font-size: 16px;"><span data-i18n="s10.done">⚡ <strong>All Q1 is COMPLETED</strong> — Product in production: <span class="highlight">0xsonata.site</span></span></p>
                 </div>
             </div>
 
             <!-- Slide 11: Pruébalo -->
             <div class="slide-container">
-                <h2 class="slide-title">10. Pruébalo Ahora Mismo</h2>
+                <h2 class="slide-title"><span data-i18n="s11.title">10. Try It Right Now</span></h2>
                 <div style="text-align: center;">
-                    <p style="font-size: 22px; margin-bottom: 30px;">Todo es <span class="highlight">gratuito</span> en devnet. No necesitas dinero real.</p>
+                    <p style="font-size: 22px; margin-bottom: 30px;"><span data-i18n="s11.sub">Everything is <span class="highlight">free</span> on devnet. No real money needed.</span></p>
                     <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 30px;">
                         <div class="stat-box" style="width: 180px;">
                             <i class="fa-solid fa-globe" style="font-size: 30px; color: var(--neon-cyan); margin-bottom: 10px;"></i>
-                            <div style="font-size: 14px; font-weight: bold; color: #fff;">1. Visita</div>
+                            <div style="font-size: 14px; font-weight: bold; color: #fff;" data-i18n="s11.s1">1. Visit</div>
                             <div class="stat-label">0xsonata.site</div>
                         </div>
                         <div class="stat-box" style="width: 180px;">
                             <i class="fa-solid fa-wallet" style="font-size: 30px; color: var(--neon-purple); margin-bottom: 10px;"></i>
-                            <div style="font-size: 14px; font-weight: bold; color: #fff;">2. Conecta</div>
+                            <div style="font-size: 14px; font-weight: bold; color: #fff;" data-i18n="s11.s2">2. Connect</div>
                             <div class="stat-label">Pali Wallet</div>
                         </div>
                         <div class="stat-box" style="width: 180px;">
                             <i class="fa-solid fa-faucet-drip" style="font-size: 30px; color: #00ff88; margin-bottom: 10px;"></i>
-                            <div style="font-size: 14px; font-weight: bold; color: #fff;">3. Faucet</div>
-                            <div class="stat-label">tSYS gratis</div>
+                            <div style="font-size: 14px; font-weight: bold; color: #fff;" data-i18n="s11.s3">3. Faucet</div>
+                            <div class="stat-label" data-i18n="s11.s3l">Free tSYS</div>
                         </div>
                         <div class="stat-box" style="width: 180px;">
                             <i class="fa-solid fa-music" style="font-size: 30px; color: #ffd700; margin-bottom: 10px;"></i>
-                            <div style="font-size: 14px; font-weight: bold; color: #fff;">4. Registra</div>
-                            <div class="stat-label">Tu proceso creativo</div>
+                            <div style="font-size: 14px; font-weight: bold; color: #fff;" data-i18n="s11.s4">4. Register</div>
+                            <div class="stat-label" data-i18n="s11.s4l">Your creative process</div>
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center; gap: 20px;">
@@ -875,22 +905,22 @@
                         <span class="logo-icon" style="font-size: 4rem;">𝄞</span>
                         <span class="logo-text" style="font-size: 2.5rem;">0xSonata</span>
                     </div>
-                    <h1 style="font-size: 46px;">TU MÚSICA MERECE<br><span style="color: var(--neon-purple);">SER PROTEGIDA</span></h1>
+                    <h1 style="font-size: 46px;"><span data-i18n="s12.title">YOUR MUSIC DESERVES<br><span style="color: var(--neon-purple);">TO BE PROTECTED</span></span></h1>
                     <div style="width: 200px; height: 4px; background: linear-gradient(to right, var(--neon-cyan), var(--neon-purple)); margin: 25px auto;"></div>
-                    <p style="color: var(--neon-cyan); font-size: 22px; margin-bottom: 10px;">Vota por 0xSonata 🗳️</p>
-                    <p style="color: #b0b0c0; font-size: 16px;">Ayúdanos a proteger a los artistas emergentes del mundo</p>
+                    <p style="color: var(--neon-cyan); font-size: 22px; margin-bottom: 10px;"><span data-i18n="s12.cta">Vote for 0xSonata 🗳️</span></p>
+                    <p style="color: #b0b0c0; font-size: 16px;"><span data-i18n="s12.sub">Help us protect emerging artists worldwide</span></p>
                     <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
                         <div class="tech-badge" style="font-size: 16px;">🌐 0xsonata.site</div>
                         <div class="tech-badge" style="font-size: 16px;">🐙 GitHub</div>
                         <div class="tech-badge" style="font-size: 16px;">🐦 @0xSonata</div>
                     </div>
-                    <p style="color: #555; margin-top: 25px; font-size: 13px;">Hackathon Syscoin Proof-of-Builders 2026 · Hecho con ❤️ para los creadores</p>
+                    <p style="color: #555; margin-top: 25px; font-size: 13px;"><span data-i18n="s12.footer">Hackathon Syscoin Proof-of-Builders 2026 · Made with ❤️ for creators</span></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="nav-hint">Flechas ← → | Arrastra a BIT-BOT</div>
+    <div class="nav-hint"><span data-i18n="nav.hint">Arrows ← → | Drag BIT-BOT</span></div>
 
     <script>
         const viewport = document.getElementById('presentation-viewport');
@@ -1036,6 +1066,230 @@
         });
 
         updatePresentation();
+
+        // --- i18n SYSTEM ---
+        let currentLang = 'en';
+
+        const translations = {
+            es: {
+                's1.title': '¿CREASTE MÚSICA<br>CON IA?',
+                's1.sub1': 'Protege tu autoría antes de que sea tarde',
+                's1.sub2': 'Notario Digital Web3 para Artistas que Crean Música Usando Herramientas de IA',
+                's1.footer': '🌐 0xsonata.site — Hackathon Syscoin Proof-of-Builders 2026',
+
+                's2.title': '01. Un Mercado de $6.65B en Riesgo',
+                's2.market': 'Mercado de IA Musical en 2025 — Market.us',
+                's2.no': 'Música <strong>100% IA</strong> → <span class="warning">Sin copyright</span>',
+                's2.yes': 'Con <strong>autoría humana</strong> → <span class="highlight">Protegida</span>',
+                's2.source': '— Copyright Office de EE.UU., Enero 2025',
+                's2.pain': '😰 El Dolor del Artista',
+                's2.quote': '"Generé 50 canciones en Suno, pago $30/mes... y ahora me dicen que <span class="warning">no puedo copyrightear ninguna</span>."',
+                's2.cost': '💰 Registrar en Copyright Office: <strong>$45 por canción</strong>',
+                's2.reject': '📋 Sin evidencia de proceso: <strong>Rechazo automático</strong>',
+
+                's3.title': '02. Cómo Funciona 0xSonata',
+                's3.sub': 'Registra cada paso de tu proceso creativo como <span class="highlight">cadena de evidencia inmutable</span>',
+                's3.step1': 'Paso 1', 's3.d1': 'Prompt</strong><br>El texto exacto en Suno/Udio',
+                's3.step2': 'Paso 2', 's3.d2': 'Variaciones</strong><br>Opciones generadas por la IA',
+                's3.step3': 'Paso 3', 's3.d3': 'Selección</strong><br>Tu decisión humana',
+                's3.step4': 'Paso 4', 's3.d4': 'Edición DAW</strong><br>Tu aporte en Ableton/FL',
+                's3.step5': 'Paso 5', 's3.d5': 'Master Final</strong><br>Hash registrado on-chain',
+                's3.bottom': 'Cada paso genera un <span class="highlight">hash SHA-256 con timestamp</span> → Certificado PDF descargable para Copyright Office',
+
+                's4.title': '03. Producto Funcionando ✅',
+                's4.sub': 'No es un concepto. <span class="highlight">Ya está en producción</span> en 0xsonata.site',
+                's4.f1t': '🏠 Leaderboard', 's4.f1d': 'Ranking de artistas con podio Top 3, sistema de alas animadas, score de integridad y tiers (Emergente→Oro)',
+                's4.f2t': '🎵 Mint 3 Fases', 's4.f2d': 'Upload → Documenta 5 pasos → Completo. Con recuperación automática de Token ID y sync a backend',
+                's4.f3t': '✅ Verificación + Stake', 's4.f3d': 'Deposita 0.001 tSYS, verifica artistas. Stake como garantía de honestidad',
+                's4.f4t': '🔧 Herramientas + i18n', 's4.f4d': 'Página de tools curada, tema claro/oscuro, soporte ES/EN, certificados PDF',
+                's4.tests': 'Tests Pasando', 's4.contracts': 'Smart Contracts', 's4.deploy': 'Deploy con 1 cmd',
+
+                's5.title': '04. ¿Por Qué Syscoin?',
+                's5.sub': '0xSonata eligió <span class="highlight">zkSYS PoB Devnet</span> por razones estratégicas',
+                's5.f1t': 'Gas Ultra-Bajo', 's5.f1d': '~$0.0001 USD por transacción. Un artista documenta 5 pasos por <strong>menos de $0.001</strong>',
+                's5.f2t': 'Velocidad zkRollup', 's5.f2d': 'Confirmación rápida. UX fluida: mint + 5 pasos en <strong>menos de 2 minutos</strong>',
+                's5.f3t': 'Pali Wallet', 's5.f3d': 'Wallet nativa del ecosistema. Integración directa, <strong>auto-switch de red</strong>',
+                's5.f4t': 'Path a Mainnet', 's5.f4d': 'Devnet → Testnet → <strong>Syscoin Mainnet</strong> (Chain ID 57). Mismos contratos, producción real',
+                's5.faucet': '🚰 <strong>Faucet gratuito</strong> disponible → Cualquiera puede probar sin gastar dinero real',
+
+                's6.title': '05. Arquitectura del Smart Contract',
+                's6.l1': 'CAPA 1', 's6.l1t': 'Creative Process Chain',
+                's6.l1d': '<span class="highlight">mint()</span> + <span class="highlight">addStep()</span> — Registra audio hash + 5 pasos del proceso creativo como ERC-721',
+                's6.l2': 'CAPA 2', 's6.l2t': 'Verificación con Stake',
+                's6.l2d': '<span class="highlight">deposit()</span> + <span class="highlight">verify()</span> — Stake 0.001 tSYS mínimo. No verificas tus propias ideas. Skin in the game',
+                's6.l3': 'CAPA 3', 's6.l3t': 'Reputación y Tiers',
+                's6.l3d': '<span class="highlight">getTier()</span> — Emergente→Bronce→Plata→Oro. Basado en mints, verificaciones y antigüedad. On-chain',
+                's6.l4': 'CAPA 4', 's6.l4t': 'ProjectVault (Revenue Sharing)',
+                's6.l4d': '<span class="highlight">createVault()</span> + <span class="highlight">fundVault()</span> — Splits automáticos en basis points. Colaboraciones transparentes',
+
+                's7.title': '06. Lo que nos Diferencia',
+                's7.f1t': 'Certificados PDF', 's7.f1d': 'Genera PDFs con tu cadena de evidencia creativa. <strong>Presentable al Copyright Office</strong>',
+                's7.f2t': 'ProjectVault', 's7.f2d': 'Colaboraciones con <strong>revenue sharing automático</strong>. Splits en smart contract, sin intermediarios',
+                's7.f3t': 'Verificación Honesta', 's7.f3d': 'Stake como garantía. <strong>No puedes verificarte a ti mismo</strong>. Peso de voto escala con tu tier',
+                's7.f4t': 'Gratis para Empezar', 's7.f4d': 'Faucet con tSYS gratis. Gas ~$0.0001. <strong>Un artista no gasta más de $0.001</strong>',
+
+                's8.title': '07. Mercado Objetivo',
+                's8.ideal': '👤 Usuario Ideal',
+                's8.u1': 'Usa <strong>Suno o Udio</strong> ($10-30/mes)',
+                's8.u2': 'Generó <strong>10+ canciones</strong> en 3 meses',
+                's8.u3': 'Quiere monetizar en <strong>Spotify/YouTube</strong>',
+                's8.u4': 'Leyó sobre el <strong>ruling 2025</strong>',
+                's8.u5': 'Tiene <span class="warning">MIEDO</span> de perder su trabajo',
+                's8.u6': 'Edad: <strong>18-35</strong>, productor emergente',
+                's8.community': 'Comunidad combinada (Reddit + Discord)',
+
+                's9.title': '08. Historias de Usuarios',
+                's9.j.q': '"Pago $30/mes en Suno y no puedo copyrightear ninguna canción"',
+                's9.j.a': '<span style="color: var(--neon-purple); font-weight: bold;">Con 0xSonata:</span> Registra su prompt, variaciones y ediciones en DAW. Genera certificado PDF y sube a DistroKid con confianza',
+                's9.v.q': '"Mi productor usó mi beat de Udio sin darme crédito"',
+                's9.v.a': '<span style="color: var(--neon-purple); font-weight: bold;">Con 0xSonata:</span> Timestamp inmutable en blockchain. Si alguien reclama su beat, ella tiene prueba fechada de anterioridad',
+                's9.c.q': '"Colaboramos en un EP pero no sabemos cómo dividir las regalías"',
+                's9.c.a': '<span style="color: var(--neon-purple); font-weight: bold;">Con ProjectVault:</span> Splits automáticos 50-50 en smart contract. Sin intermediarios, sin discusiones',
+
+                's10.title': '09. Roadmap y Tracción',
+                's10.q1': '✅ Q1 2026 — HOY',
+                's10.q1f5': 'Leaderboard con tiers', 's10.q1f6': 'Verificación con stake',
+                's10.q2': '📍 Q2 2026',
+                's10.q2f3': 'Certificados PDF v2', 's10.q2f4': 'IPFS para archivos',
+                's10.q3': '🔮 Q3 2026',
+                's10.q3f3': 'API pública',
+                's10.done': '⚡ <strong>Todo el Q1 está COMPLETADO</strong> — Producto en producción: <span class="highlight">0xsonata.site</span>',
+
+                's11.title': '10. Pruébalo Ahora Mismo',
+                's11.sub': 'Todo es <span class="highlight">gratuito</span> en devnet. No necesitas dinero real.',
+                's11.s1': '1. Visita', 's11.s2': '2. Conecta', 's11.s3': '3. Faucet', 's11.s3l': 'tSYS gratis',
+                's11.s4': '4. Registra', 's11.s4l': 'Tu proceso creativo',
+
+                's12.title': 'TU MÚSICA MERECE<br><span style="color: var(--neon-purple);">SER PROTEGIDA</span>',
+                's12.cta': 'Vota por 0xSonata 🗳️',
+                's12.sub': 'Ayúdanos a proteger a los artistas emergentes del mundo',
+                's12.footer': 'Hackathon Syscoin Proof-of-Builders 2026 · Hecho con ❤️ para los creadores',
+
+                'nav.hint': 'Flechas ← → | Arrastra a BIT-BOT',
+            },
+            en: {
+                's1.title': 'DID YOU CREATE MUSIC<br>WITH AI?',
+                's1.sub1': "Protect your authorship before it's too late",
+                's1.sub2': 'Web3 Digital Notary for Artists Creating Music Using AI Tools',
+                's1.footer': '🌐 0xsonata.site — Hackathon Syscoin Proof-of-Builders 2026',
+
+                's2.title': '01. A $6.65B Market at Risk',
+                's2.market': 'AI Music Market 2025 — Market.us',
+                's2.no': 'Music <strong>100% AI</strong> → <span class="warning">No copyright</span>',
+                's2.yes': 'With <strong>human authorship</strong> → <span class="highlight">Protected</span>',
+                's2.source': '— US Copyright Office, January 2025',
+                's2.pain': "😰 The Artist's Pain",
+                's2.quote': '"I generated 50 songs on Suno, I pay $30/month... and now they tell me I <span class="warning">can\'t copyright any of them</span>."',
+                's2.cost': '💰 Register at Copyright Office: <strong>$45 per song</strong>',
+                's2.reject': '📋 No process evidence: <strong>Automatic rejection</strong>',
+
+                's3.title': '02. How 0xSonata Works',
+                's3.sub': 'Records each step of your creative process as an <span class="highlight">immutable evidence chain</span>',
+                's3.step1': 'Step 1', 's3.d1': 'Prompt</strong><br>The exact text in Suno/Udio',
+                's3.step2': 'Step 2', 's3.d2': 'Variations</strong><br>Options generated by AI',
+                's3.step3': 'Step 3', 's3.d3': 'Selection</strong><br>Your human decision',
+                's3.step4': 'Step 4', 's3.d4': 'DAW Editing</strong><br>Your input in Ableton/FL',
+                's3.step5': 'Step 5', 's3.d5': 'Final Master</strong><br>Hash recorded on-chain',
+                's3.bottom': 'Each step generates a <span class="highlight">SHA-256 hash with timestamp</span> → Downloadable PDF certificate for Copyright Office',
+
+                's4.title': '03. Working Product ✅',
+                's4.sub': 'Not a concept. <span class="highlight">Already in production</span> at 0xsonata.site',
+                's4.f1t': '🏠 Leaderboard', 's4.f1d': 'Artist ranking with Top 3 podium, animated wings system, integrity score and tiers (Emergent→Gold)',
+                's4.f2t': '🎵 Mint 3 Phases', 's4.f2d': 'Upload → Document 5 steps → Complete. With automatic Token ID recovery and backend sync',
+                's4.f3t': '✅ Verification + Stake', 's4.f3d': 'Deposit 0.001 tSYS, verify artists. Stake as honesty guarantee',
+                's4.f4t': '🔧 Tools + i18n', 's4.f4d': 'Curated tools page, light/dark theme, ES/EN support, PDF certificates',
+                's4.tests': 'Tests Passing', 's4.contracts': 'Smart Contracts', 's4.deploy': 'Deploy with 1 cmd',
+
+                's5.title': '04. Why Syscoin?',
+                's5.sub': '0xSonata chose <span class="highlight">zkSYS PoB Devnet</span> for strategic reasons',
+                's5.f1t': 'Ultra-Low Gas', 's5.f1d': '~$0.0001 USD per transaction. An artist documents 5 steps for <strong>less than $0.001</strong>',
+                's5.f2t': 'zkRollup Speed', 's5.f2d': 'Fast confirmation. Smooth UX: mint + 5 steps in <strong>less than 2 minutes</strong>',
+                's5.f3t': 'Pali Wallet', 's5.f3d': 'Ecosystem native wallet. Direct integration, <strong>auto-switch network</strong>',
+                's5.f4t': 'Path to Mainnet', 's5.f4d': 'Devnet → Testnet → <strong>Syscoin Mainnet</strong> (Chain ID 57). Same contracts, real production',
+                's5.faucet': '🚰 <strong>Free faucet</strong> available → Anyone can try without spending real money',
+
+                's6.title': '05. Smart Contract Architecture',
+                's6.l1': 'LAYER 1', 's6.l1t': 'Creative Process Chain',
+                's6.l1d': '<span class="highlight">mint()</span> + <span class="highlight">addStep()</span> — Records audio hash + 5 creative process steps as ERC-721',
+                's6.l2': 'LAYER 2', 's6.l2t': 'Stake Verification',
+                's6.l2d': '<span class="highlight">deposit()</span> + <span class="highlight">verify()</span> — Stake 0.001 tSYS minimum. Can\'t verify your own ideas. Skin in the game',
+                's6.l3': 'LAYER 3', 's6.l3t': 'Reputation & Tiers',
+                's6.l3d': '<span class="highlight">getTier()</span> — Emergent→Bronze→Silver→Gold. Based on mints, verifications and account age. On-chain',
+                's6.l4': 'LAYER 4', 's6.l4t': 'ProjectVault (Revenue Sharing)',
+                's6.l4d': '<span class="highlight">createVault()</span> + <span class="highlight">fundVault()</span> — Automatic splits in basis points. Transparent collaborations',
+
+                's7.title': '06. What Sets Us Apart',
+                's7.f1t': 'PDF Certificates', 's7.f1d': 'Generate PDFs with your creative evidence chain. <strong>Presentable to the Copyright Office</strong>',
+                's7.f2t': 'ProjectVault', 's7.f2d': 'Collaborations with <strong>automatic revenue sharing</strong>. Splits in smart contract, no middlemen',
+                's7.f3t': 'Honest Verification', 's7.f3d': "Stake as guarantee. <strong>You can't verify yourself</strong>. Vote weight scales with your tier",
+                's7.f4t': 'Free to Start', 's7.f4d': 'Faucet with free tSYS. Gas ~$0.0001. <strong>An artist spends no more than $0.001</strong>',
+
+                's8.title': '07. Target Market',
+                's8.ideal': '👤 Ideal User',
+                's8.u1': 'Uses <strong>Suno or Udio</strong> ($10-30/month)',
+                's8.u2': 'Generated <strong>10+ songs</strong> in 3 months',
+                's8.u3': 'Wants to monetize on <strong>Spotify/YouTube</strong>',
+                's8.u4': 'Read about the <strong>2025 ruling</strong>',
+                's8.u5': 'Has <span class="warning">FEAR</span> of losing their work',
+                's8.u6': 'Age: <strong>18-35</strong>, emerging producer',
+                's8.community': 'Combined community (Reddit + Discord)',
+
+                's9.title': '08. User Stories',
+                's9.j.q': '"I pay $30/month on Suno and I can\'t copyright any song"',
+                's9.j.a': '<span style="color: var(--neon-purple); font-weight: bold;">With 0xSonata:</span> Records prompt, variations and DAW edits. Generates PDF certificate and uploads to DistroKid with confidence',
+                's9.v.q': '"My producer used my Udio beat without giving me credit"',
+                's9.v.a': '<span style="color: var(--neon-purple); font-weight: bold;">With 0xSonata:</span> Immutable timestamp on blockchain. If someone claims her beat, she has dated proof of priority',
+                's9.c.q': '"We collaborated on an EP but don\'t know how to split royalties"',
+                's9.c.a': '<span style="color: var(--neon-purple); font-weight: bold;">With ProjectVault:</span> Automatic 50-50 splits in smart contract. No middlemen, no arguments',
+
+                's10.title': '09. Roadmap & Traction',
+                's10.q1': '✅ Q1 2026 — TODAY',
+                's10.q1f5': 'Leaderboard with tiers', 's10.q1f6': 'Verification with stake',
+                's10.q2': '📍 Q2 2026',
+                's10.q2f3': 'PDF Certificates v2', 's10.q2f4': 'IPFS for files',
+                's10.q3': '🔮 Q3 2026',
+                's10.q3f3': 'Public API',
+                's10.done': '⚡ <strong>All Q1 is COMPLETED</strong> — Product in production: <span class="highlight">0xsonata.site</span>',
+
+                's11.title': '10. Try It Right Now',
+                's11.sub': 'Everything is <span class="highlight">free</span> on devnet. No real money needed.',
+                's11.s1': '1. Visit', 's11.s2': '2. Connect', 's11.s3': '3. Faucet', 's11.s3l': 'Free tSYS',
+                's11.s4': '4. Register', 's11.s4l': 'Your creative process',
+
+                's12.title': 'YOUR MUSIC DESERVES<br><span style="color: var(--neon-purple);">TO BE PROTECTED</span>',
+                's12.cta': 'Vote for 0xSonata 🗳️',
+                's12.sub': 'Help us protect emerging artists worldwide',
+                's12.footer': 'Hackathon Syscoin Proof-of-Builders 2026 · Made with ❤️ for creators',
+
+                'nav.hint': 'Arrows ← → | Drag BIT-BOT',
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            // Update toggle button visual state
+            const enEl = document.getElementById('langEN');
+            const esEl = document.getElementById('langES');
+            if (lang === 'en') {
+                enEl.className = 'active-lang';
+                esEl.className = 'inactive-lang';
+            } else {
+                enEl.className = 'inactive-lang';
+                esEl.className = 'active-lang';
+            }
+        }
+
+        document.getElementById('langToggle').addEventListener('click', (e) => {
+            e.stopPropagation();
+            setLanguage(currentLang === 'en' ? 'es' : 'en');
+        });
+
     </script>
 
 </body>
