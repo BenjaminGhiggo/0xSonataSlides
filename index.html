@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Cyber-Pulse v.2.9</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- CORE STYLING & RESET --- */
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-purple: #bc13fe;
+            --bg-deep: #050508;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --transition-speed: 0.9s;
+            --easing: cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-deep);
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            user-select: none;
+        }
+
+        /* --- PRESENTATION ENGINE --- */
+        #presentation-viewport {
+            width: 1280px;
+            height: 720px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
+            background: #000;
+        }
+
+        #slide-wrapper {
+            display: flex;
+            width: 1200%; /* 12 slides */
+            height: 100%;
+            transition: transform var(--transition-speed) var(--easing);
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            padding: 80px 100px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: radial-gradient(circle at center, #0d0d1f 0%, #050508 100%);
+        }
+
+        /* --- NAVIGATION UI --- */
+        .ui-nav-panel {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 25px;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button {
+            background: transparent;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .nav-button:disabled {
+            border-color: #444;
+            color: #444;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .slide-counter {
+            font-family: 'Orbitron';
+            font-size: 14px;
+            color: #fff;
+            letter-spacing: 2px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        /* --- INTERACTIVE ROBOTIC AGENT (BIT-BOT) --- */
+        #robot-agent {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            z-index: 1000;
+            cursor: grab;
+            filter: drop-shadow(0 0 15px var(--neon-cyan));
+        }
+        #robot-agent:active { cursor: grabbing; }
+
+        #robot-speech {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: #fff;
+            color: #000;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+        #robot-speech::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #fff;
+        }
+        #robot-speech.active { transform: translateX(-50%) scale(1); }
+
+        .robot-body {
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 10, 20, 0.9);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 12px;
+            position: relative;
+            animation: hover 2.5s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.5s, box-shadow 0.5s;
+        }
+
+        .robot-face {
+            width: 35px;
+            height: 15px;
+            background: #000;
+            border-radius: 5px;
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 5px;
+        }
+
+        .eye-container {
+            width: 8px;
+            height: 8px;
+            background: #111;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eye {
+            width: 6px;
+            height: 6px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-cyan);
+            position: absolute;
+            top: 1px;
+            left: 1px;
+        }
+
+        .robot-antenna {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: var(--neon-cyan);
+        }
+
+        .robot-antenna::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -3px;
+            width: 8px;
+            height: 8px;
+            background: var(--neon-purple);
+            border-radius: 50%;
+            animation: pulse-glow 1s infinite alternate;
+        }
+
+        .robot-thruster {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 10px;
+            background: linear-gradient(to bottom, var(--neon-cyan), transparent);
+            border-radius: 50%;
+            opacity: 0.6;
+            filter: blur(2px);
+            animation: engine 0.2s infinite alternate;
+        }
+
+        @keyframes hover { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
+        @keyframes pulse-glow { from { box-shadow: 0 0 2px var(--neon-purple); } to { box-shadow: 0 0 12px var(--neon-purple); } }
+        @keyframes engine { from { height: 10px; opacity: 0.4; } to { height: 18px; opacity: 0.8; } }
+
+        /* --- TYPOGRAPHY & VISUALS --- */
+        h1 { font-family: 'Orbitron'; font-size: 85px; color: var(--neon-cyan); text-transform: uppercase; line-height: 1; }
+        .slide-title { font-family: 'Orbitron'; font-size: 40px; margin-bottom: 30px; color: var(--neon-purple); letter-spacing: 2px; }
+        p, li { font-size: 20px; color: #b0b0c0; line-height: 1.5; }
+
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        /* --- UI COMPONENTS --- */
+        .tile {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-box { border: 1px solid var(--neon-cyan); border-radius: 10px; overflow: hidden; position: relative; }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+
+        .nav-hint { position: fixed; bottom: 5px; width: 100%; text-align: center; color: rgba(255,255,255,0.1); font-size: 10px; letter-spacing: 2px; }
+
+    </style>
+</head>
+<body>
+
+<div id="presentation-viewport">
+    <!-- UI Navigation Buttons -->
+    <div class="ui-nav-panel">
+        <button class="nav-button" id="prevSlide" title="Anterior"><i class="fas fa-arrow-left"></i></button>
+        <div class="slide-counter" id="slideCount">01 / 12</div>
+        <button class="nav-button" id="nextSlide" title="Siguiente"><i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <!-- Robotic Agent -->
+    <div id="robot-agent">
+        <div id="robot-speech">¡OYE!</div>
+        <div class="robot-antenna"></div>
+        <div class="robot-body">
+            <div class="robot-face">
+                <div class="eye-container"><div class="eye"></div></div>
+                <div class="eye-container"><div class="eye"></div></div>
+            </div>
+            <div class="robot-thruster"></div>
+        </div>
+    </div>
+
+    <div id="slide-wrapper">
+        <!-- Slide 1 -->
+        <div class="slide-container">
+            <div class="grid-bg"></div>
+            <div style="text-align: center;">
+                <p style="color: var(--neon-cyan); letter-spacing: 5px;">SISTEMA OPERATIVO v2.9</p>
+                <h1>CYBER PULSE</h1>
+                <div style="width: 100px; height: 4px; background: var(--neon-purple); margin: 30px auto;"></div>
+                <p>Navegación Descentralizada e Inmortalidad Digital</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide-container">
+            <h2 class="slide-title">01. Arquitectura de Red</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div class="tile">
+                    <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">Nodos Periféricos</h3>
+                    <p>Conexión total entre dispositivos IoT y la cadena principal para una sincronización absoluta.</p>
+                </div>
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Tech Hub">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide-container">
+            <h2 class="slide-title">02. Protocolos de Consenso</h2>
+            <div style="display: flex; gap: 20px;">
+                <div class="tile" style="flex: 1; border-top: 4px solid var(--neon-cyan);">
+                    <i class="fa-solid fa-bolt" style="font-size: 30px; margin-bottom: 20px; color: var(--neon-cyan);"></i>
+                    <h3>Proof of Speed</h3>
+                    <p>Validación instantánea mediante algoritmos de predicción cuántica.</p>
+                </div>
+                <div class="tile" style="flex: 1; border-top: 4px solid var(--neon-purple);">
+                    <i class="fa-solid fa-shield" style="font-size: 30px; margin-bottom: 20px; color: var(--neon-purple);"></i>
+                    <h3>Zero-Trust</h3>
+                    <p>Verificación continua de cada paquete de datos sin revelar identidad.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide-container">
+            <h2 class="slide-title">03. Smart Cities</h2>
+            <div class="image-box" style="height: 350px;">
+                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=800&q=80" alt="Neon City">
+                <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); padding: 15px; border-left: 3px solid var(--neon-cyan);">
+                    <p style="color: #fff;">Infraestructura urbana conectada a la Mainnet.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Espacios para el resto de slides -->
+        <div class="slide-container"><h2 class="slide-title">04. Gobernanza DAO</h2><p>Participación directa en la toma de decisiones.</p></div>
+        <div class="slide-container"><h2 class="slide-title">05. Activos Digitales</h2><p>Tokenización de recursos del mundo real.</p></div>
+        <div class="slide-container"><h2 class="slide-title">06. Seguridad Cuántica</h2><p>Algoritmos resistentes a la computación del futuro.</p></div>
+        <div class="slide-container"><h2 class="slide-title">07. Interconectividad</h2><p>Puentes entre cadenas de bloques.</p></div>
+        <div class="slide-container"><h2 class="slide-title">08. Privacidad Total</h2><p>Capa de anonimato integrada.</p></div>
+        <div class="slide-container"><h2 class="slide-title">09. El Futuro</h2><p>Evolución constante de la red.</p></div>
+        <div class="slide-container"><h2 class="slide-title">10. Conclusión</h2><p>Hacia una sociedad descentralizada.</p></div>
+        
+        <!-- Slide 12 -->
+        <div class="slide-container">
+            <div style="text-align: center;">
+                <h1 style="font-size: 60px;">FIN DE TRANSMISIÓN</h1>
+                <p style="color: var(--neon-purple); margin-top: 20px;">Protocolo Cyber Pulse 2026</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="nav-hint">Flechas ← → | Arrastra a BIT-BOT</div>
+
+<script>
+    const viewport = document.getElementById('presentation-viewport');
+    const wrapper = document.getElementById('slide-wrapper');
+    const robot = document.getElementById('robot-agent');
+    const eyes = document.querySelectorAll('.eye');
+    const speech = document.getElementById('robot-speech');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const slideCount = document.getElementById('slideCount');
+    
+    let currentSlide = 0;
+    const totalSlides = 12;
+
+    const robotPositions = [
+        { bottom: '50px', right: '50px', color: '#00f3ff' },
+        { bottom: '50px', left: '50px', color: '#bc13fe' },
+        { top: '50px', right: '50px', color: '#00f3ff' },
+        { bottom: '300px', right: '100px', color: '#bc13fe' },
+        { top: '40%', left: '80%', color: '#00f3ff' },
+        { bottom: '150px', right: '50px', color: '#bc13fe' },
+        { top: '100px', left: '100px', color: '#00f3ff' },
+        { bottom: '50px', left: '500px', color: '#bc13fe' },
+        { top: '50px', left: '50px', color: '#00f3ff' },
+        { bottom: '200px', right: '50px', color: '#bc13fe' },
+        { top: '50%', left: '10%', color: '#00f3ff' },
+        { bottom: '50px', right: '150px', color: '#bc13fe' }
+    ];
+
+    let hasMovedManually = false;
+
+    function updatePresentation() {
+        wrapper.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+        
+        // Actualizar UI
+        slideCount.innerText = `${(currentSlide + 1).toString().padStart(2, '0')} / ${totalSlides}`;
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === totalSlides - 1;
+
+        if (!hasMovedManually) {
+            const pos = robotPositions[currentSlide];
+            robot.style.transition = "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
+            
+            robot.style.top = pos.top || 'auto';
+            robot.style.bottom = pos.bottom || 'auto';
+            robot.style.left = pos.left || 'auto';
+            robot.style.right = pos.right || 'auto';
+
+            const robotBody = robot.querySelector('.robot-body');
+            robotBody.style.borderColor = pos.color;
+            robotBody.style.boxShadow = `0 0 20px ${pos.color}`;
+        }
+    }
+
+    // --- BUTTON CONTROLS ---
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentSlide > 0) {
+            currentSlide--;
+            updatePresentation();
+        }
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            updatePresentation();
+        }
+    });
+
+    // --- LÓGICA DE ARRASTRE (DRAG & DROP) ---
+    let isDragging = false;
+    let startX, startY, initialX, initialY;
+
+    robot.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        hasMovedManually = true;
+        robot.style.transition = "none";
+        
+        startX = e.clientX;
+        startY = e.clientY;
+        
+        const rect = robot.getBoundingClientRect();
+        const viewRect = viewport.getBoundingClientRect();
+        
+        initialX = rect.left - viewRect.left;
+        initialY = rect.top - viewRect.top;
+        
+        e.stopPropagation();
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        eyes.forEach(eye => {
+            const rect = eye.parentElement.getBoundingClientRect();
+            const eyeCenterX = rect.left + rect.width / 2;
+            const eyeCenterY = rect.top + rect.height / 2;
+            const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+            const dist = 2;
+            eye.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist}px)`;
+        });
+
+        if (isDragging) {
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            
+            let newX = initialX + dx;
+            let newY = initialY + dy;
+            
+            newX = Math.max(0, Math.min(newX, 1280 - 60));
+            newY = Math.max(0, Math.min(newY, 720 - 80));
+            
+            robot.style.left = newX + 'px';
+            robot.style.top = newY + 'px';
+            robot.style.bottom = 'auto';
+            robot.style.right = 'auto';
+        }
+    });
+
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    robot.addEventListener('click', (e) => {
+        if (Math.abs(e.clientX - startX) > 5) return;
+
+        speech.innerText = "¡SISTEMA OK!";
+        speech.classList.add('active');
+        const robotBody = robot.querySelector('.robot-body');
+        robotBody.style.borderColor = "#ff4d4d";
+        eyes.forEach(eye => eye.style.background = "#ff4d4d");
+
+        setTimeout(() => {
+            speech.classList.remove('active');
+            robotBody.style.borderColor = "";
+            eyes.forEach(eye => eye.style.background = "");
+        }, 1000);
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) { currentSlide++; updatePresentation(); }
+        if (e.key === 'ArrowLeft' && currentSlide > 0) { currentSlide--; updatePresentation(); }
+    });
+
+    updatePresentation();
+</script>
+
+</body>
+</html>
